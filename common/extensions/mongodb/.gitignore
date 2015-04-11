@@ -1,0 +1,6 @@
+
+# Ignore eclipse crap
+.buildpath
+.settings
+.project
+/nbproject/private/
