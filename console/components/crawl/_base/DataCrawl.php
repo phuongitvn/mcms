@@ -38,9 +38,9 @@ class DataCrawl extends AbstractDataCrawl
 			throw new Exception('Content pattern is empty', 606);
 		}
 		$contentParttern = $this->config['content_pattern'];
-		$this->beforeGetContent();
+		$this->beforeGetContentBody();
 		$this->content = ($this->html->find("$contentParttern",0))?$this->html->find("$contentParttern",0)->innertext:"";
-		$this->afterGetContent();
+		$this->afterGetContentBody();
 		return $this->content;
 	}
 	public function getFirstImage()
@@ -72,11 +72,11 @@ class DataCrawl extends AbstractDataCrawl
 			$e->href = '#';
 		}
 	}
-	protected function beforeGetContent()
+	protected function beforeGetContentBody()
 	{
 		//
 	}
-	protected function afterGetContent()
+	protected function afterGetContentBody()
 	{
 		//
 	}

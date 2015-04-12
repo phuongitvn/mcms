@@ -31,7 +31,6 @@ class NewsCrawlCommand extends CConsoleCommand
                 foreach ($main->find(".asset") as $e) {
                     $html = array();
                     if (is_object($e)) {
-                        //$title = ($e->find(".assetBody a h2", 0))?$e->find(".assetBody a h2", 0)->innertext:"";
                         $link = ($e->find(".assetBody a", 0)) ? $e->find(".assetBody a", 0)->href : "";
                         if (!empty($link)) {
                             $link = 'http://www.cnet.com' . $link;
@@ -56,19 +55,16 @@ class NewsCrawlCommand extends CConsoleCommand
                             $pthumb = $this->processThumb($res,$html['thumb']);
                         }
                         echo "\n";
-                        //echo implode("\n",$html);
-                        /*$set = $data->setUrl($link);
-                        $html = $data->getHtml();
-                        $subTitle = addslashes($data->getTitle());
-                        echo $title = trim($subTitle);*/
-
                     }
+                    sleep(2);
+                    //exit;
                 }
             }
         }catch (Exception $e)
         {
             echo $e->getMessage();
         }
+        exit;
     }
     private function addToFeed($data)
     {
@@ -80,8 +76,12 @@ class NewsCrawlCommand extends CConsoleCommand
             $feedModel->thumb = $data['thumb'];
             $feedModel->url_source = $data['link'];
             $feedModel->source = $data['source'];
+            $feedModel->genre = $data['genre'];
+            $feedModel->comments = 0;
             $feedModel->created_datetime = new MongoDate();
             $feedModel->updated_datetime = new MongoDate();
+            $author = mt_rand(1,20);
+            $feedModel->created_by = $author;
             $feedModel->status = $data['status'];
             $res = $feedModel->save();
             return $feedModel->_id;
@@ -112,13 +112,24 @@ class NewsCrawlCommand extends CConsoleCommand
         if ($res_get_file && file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
             $fileSystem = new Filesystem();
-            $copy = $fileSystem->copy($tmpFile,$fileDest);
-            if($copy){
+            //$copy = $fileSystem->copy($tmpFile,$fileDest);
+            $width = Yii::app()->params['profile_image']['thumb']['width'];
+            $height = Yii::app()->params['profile_image']['thumb']['height'];
+            $resizeObj = new ResizeImage($tmpFile);
+            $resizeObj ->resizeImage($width, $height, 0);
+            $resizeObj ->saveImage($fileDest, 100);
+            //$resize = $imageCrop->resizeCrop($fileDest,$width,$height);
+            if($resizeObj){
                 echo 'copy file success!'."\n";
                 $feed = FeedModel::model()->findByPk(new MongoId($_id));
-                $feed->thumb = $fileDest;
+                $thumbPath = str_replace($storage,'',$fileDest);
+                $feed->thumb = $thumbPath;
                 $res = $feed->save();
-                var_dump($res);
+                if($res){
+                    //change status to published
+                    $feed->status = 1;
+                    return $feed->save();
+                }
             }
         }
     }
