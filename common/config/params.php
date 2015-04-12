@@ -1,10 +1,10 @@
 <?php
 return array(
 	'params'=>array(
-        'storage'       =>'E:\storage',
-        'temp'          =>'E:\storage\tmp',
-        'feed_path'     =>'E:\storage\feed',
-        'cdn_url'      =>'http://cdn.fan2meme.com',
+        'storage'       =>'E:\source\storage',
+        'temp'          =>'E:\source\storage\tmp',
+        'feed_path'     =>'E:\source\storage\feed',
+        'cdn_url'      =>'http://localhost:1111',
 		'site_url'		=>	SITE_URL,
 		'site_path'		=>	SITE_PATH,
 		'storage_path'	=>	SITE_PATH.DS.'storage',
@@ -19,6 +19,9 @@ return array(
 		'news_url'		=>	SITE_URL.'/storage/news',
 		'blog_path'		=> 	SITE_PATH.DS.'storage'.DS.'blog',
 		'blog_url'		=>	SITE_URL.'/storage/blog',
+        'profile_image'=>array(
+            'thumb'=>array('width'=>125,'height'=>83)
+        ),
 		'images_available'=>array(
 			'full'=>array(
 				'width'=>600,
