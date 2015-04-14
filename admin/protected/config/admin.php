@@ -17,9 +17,11 @@ return CMap::mergeArray(
         'import'=>array(
             'application.components.*',
             'application.models.*',
+            'application.widgets.CActiveForm',
+            'application.widgets.CHtml',
         ),
         'modules'=>array(
-            'movies',
+            'articles',
             'gii' => array(
                 'class' => 'system.gii.GiiModule',
                 'password'=>'111',
