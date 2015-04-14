@@ -10,8 +10,8 @@
     <link type="image/x-icon" rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" >
     <?php
     $cs = Yii::app()->getClientScript();
-    $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.min.js');
-    //$cs->registerCoreScript('jquery');
+    $cs->registerCoreScript('jquery');
+    $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/core.js');
     $dir = Yii::getPathOfAlias('common').DS.'libs/bootstrap';
     $assets = Yii::app()->assetManager->publish($dir, false, -1, YII_DEBUG);
     $cs->registerScriptFile($assets.'/js/bootstrap.min.js');
@@ -21,7 +21,7 @@
     ?>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-<body class="mongo">
+<body class="mongo panel-enabled">
 <?php echo $content;?>
 </body>
 </html>
