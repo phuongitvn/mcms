@@ -17,9 +17,6 @@ body>#body-container{
 .body-content{
 	padding: 10px;
 }
-a{
-    text-decoration: none;
-}
 .search-form{
 	display: none;
 }
@@ -101,7 +98,6 @@ a{
 .show-panel #apps-panel-menu{
 	visibility: visible;
 	left: 0;
-    bottom: 0;
 	opacity: 1;
 	-moz-transition: opacity .1s;
 	-webkit-transition: opacity .1s;
@@ -214,11 +210,10 @@ a{
 }
 .form label{
 	display: block;
-	margin-bottom: 0;
-	float: left;
-	width: 130px;
-	text-align: right;
-	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.form label span.label{
+    font-size: 11px;
 }
 .form input[type="text"],
 .form textarea,
@@ -227,7 +222,9 @@ a{
 	padding: 5px;
 	border: 1px solid #D3D3D3;
 }
-
+.el-rte{
+    overflow: inherit;
+}
 .form input[type="text"]:hover,
 .form textarea:hover,
 .form select:hover{
