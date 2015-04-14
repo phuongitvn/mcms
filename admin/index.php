@@ -2,7 +2,7 @@
 
 // change the following paths if necessary
 include_once '../common/config/define.php';
-$config=dirname(__FILE__).'/protected/config/backend.php';
+$config=dirname(__FILE__).'/protected/config/admin.php';
 
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',false);
