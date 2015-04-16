@@ -126,7 +126,7 @@
 .el-rte .toolbar ul li.pagebreak{background-position:-711px -28px}
 .el-rte .workzone{border:1px solid #ccc;border-top:0;height:400px;overflow:hidden}
 .el-rte.small .workzone{min-height:250px}
-.el-rte textarea{width:100%;height:100%;border:0;zoom:1;padding:0;outline:0}
+.el-rte textarea{width:100%!important;height:100%!important;border:0;zoom:1;padding:0;outline:0}
 .el-rte.small textarea{min-height:250px}
 .el-rte iframe{width:100%;height:400px;display:block;outline:0;border:0 solid;padding:0;margin:0;background:#fff}
 .el-rte.small iframe{min-height:250px}

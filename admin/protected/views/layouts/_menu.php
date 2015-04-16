@@ -7,15 +7,8 @@ $controller = Yii::app()->controller->getId();
 		<div class="menu-section-item">
 		<ul class="apps-link">
 			<li><a class="yt-valign" href="<?php echo Yii::app()->createUrl('/dashboard');?>"><i class="glyphicon glyphicon-home"></i>&nbsp;<?php echo Yii::t('main','Dashboard')?></a></li>
-			<li><a class="yt-valign <?php if($module =='news' && $controller=='news') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/news/news/admin');?>"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;<?php echo Yii::t('main','Articles Manager')?></a>
-				<?php if($module =='news' && ($controller=='news' || $controller=='categories') || $module=='files'){?>
-				<ul class="sub-menu">
-					<li><a class="yt-valign <?php if($module =='news' && $controller=='categories') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/news/categories/admin');?>">+&nbsp;<?php echo Yii::t('main','Categories Manager')?></a></li>
-					<li><a class="yt-valign <?php if($module =='files') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/files/files/admin');?>">+&nbsp;File Manager</a></li>
-				</ul>
-				<?php }?>
-			</li>
-			<li><a class="yt-valign <?php if($module =='news' && $controller=='pages') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/news/pages/admin');?>"><i class="glyphicon glyphicon-book icon-blue"></i>&nbsp;<?php echo Yii::t('main','Pages Manager')?></a></li>
+			<li><a class="yt-valign <?php if($module =='articles' && $controller=='manager') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/articles/manager/admin');?>"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;<?php echo Yii::t('main','Articles Manager')?></a></li>
+			<li><a class="yt-valign <?php if($module =='genre' && $controller=='manager') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/genre/manager/admin');?>"><i class="glyphicon glyphicon-book icon-blue"></i>&nbsp;<?php echo Yii::t('main','Genre Manager')?></a></li>
 			<li><a class="yt-valign <?php if($module=='media') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/media/manage');?>"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;<?php echo Yii::t('main','Media Manager')?></a></li>
 			<li><a class="yt-valign <?php if($module=='polls') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/polls/poll/admin');?>"><i class="glyphicon glyphicon-tasks"></i>&nbsp;<?php echo Yii::t('main','Polls Manager')?></a></li>
 			<li><a class="yt-valign <?php if($module=='menu') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/menu/menus/admin');?>"><i class="glyphicon glyphicon-align-justify"></i>&nbsp;<?php echo Yii::t('main','Menus Manager')?></a></li>

@@ -19,8 +19,10 @@ return CMap::mergeArray(
             'application.models.*',
             'application.widgets.CActiveForm',
             'application.widgets.CHtml',
+            'application.widgets._base.*',
         ),
         'modules'=>array(
+            'genre',
             'articles',
             'gii' => array(
                 'class' => 'system.gii.GiiModule',

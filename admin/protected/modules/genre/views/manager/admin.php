@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Admin Articles Models'=>array('index'),
+	'Admin Genre Models'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List AdminArticlesModel', 'url'=>array('index')),
-	array('label'=>'Create AdminArticlesModel', 'url'=>array('create')),
+	array('label'=>'List AdminGenreModel', 'url'=>array('index')),
+	array('label'=>'Create AdminGenreModel', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('admin-articles-model-grid', {
+	$.fn.yiiGridView.update('admin-genre-model-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -24,7 +24,8 @@ $('.search-form form').submit(function(){
 
 ?>
 
-<h1>Manage Articles</h1>
+<h1>Manage Genre</h1>
+
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -34,31 +35,8 @@ $('.search-form form').submit(function(){
 </div><!-- search-form -->
 
 <?php $this->widget('application.widgets.iGridView', array(
-	'id'=>'admin-articles-model-grid',
+	'id'=>'admin-genre-model-grid',
 	'dataProvider'=>new EMongoDocumentDataProvider($model->search(), array(
-		'sort'=>array(
-            'defaultOrder'=>'_id DESC',
-			'attributes'=>array(
-				'_id',
-				'title',
-				//'introtext',
-				//'fulltext',
-				'genre',
-				//'tags',
-				/*
-				'views',
-				'thumb',
-				'comments',
-				'url_source',
-				'source',
-				'created_datetime',
-				'updated_datetime',
-				'active_datetime',
-				'created_by',
-				'status',
-				*/
-			),
-		),
 	)),
 	'filter'=>$model,
 	'columns'=>array(
@@ -70,26 +48,18 @@ $('.search-form form').submit(function(){
                 'width'	=>	'50',
             ),
         ),
-		'_id',
         array(
-            'name'=>'title',
+            'name'=>'name',
             'type'=>'raw',
-            'value'=>'CHtml::link($data->title,array("update","id"=>$data->_id))'
+            'value'=>'CHtml::link($data->name,array("update","id"=>$data->_id))'
         ),
-		//'introtext',
-		//'fulltext',
-		'genre',
-		'tags',
-        'views',
+		'code',
+		'description',
+		'parent',
+        '_id',
 		/*
-		'views',
-		'thumb',
-		'comments',
-		'url_source',
-		'source',
-		'created_datetime',
 		'updated_datetime',
-		'active_datetime',
+		'position',
 		'created_by',
 		'status',
 		*/
