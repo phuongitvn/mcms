@@ -16,7 +16,7 @@
                 <div id="head-container">
                     <div id="wr-head-container">
                         <div id="head">
-                                <div class="logo"><img width="115" src="<?php echo Yii::app()->theme->baseUrl;?>/images/logo_g.png" /></div>
+                                <div class="logo"><img width="32" src="<?php echo Yii::app()->request->baseUrl;?>/images/logo_hover.png" /></div>
                             <div id="head-user">
                                 <!-- Split button -->
                                 <div id="toolbar">

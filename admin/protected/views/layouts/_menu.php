@@ -6,7 +6,7 @@ $controller = Yii::app()->controller->getId();
 	<li class="menu-section">
 		<div class="menu-section-item">
 		<ul class="apps-link">
-			<li><a class="yt-valign" href="<?php echo Yii::app()->createUrl('/dashboard');?>"><i class="glyphicon glyphicon-home"></i>&nbsp;<?php echo Yii::t('main','Dashboard')?></a></li>
+			<li><a class="yt-valign" href="<?php echo Yii::app()->createUrl('/');?>"><i class="glyphicon glyphicon-home"></i>&nbsp;<?php echo Yii::t('main','Dashboard')?></a></li>
 			<li><a class="yt-valign <?php if($module =='articles' && $controller=='manager') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/articles/manager/admin');?>"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;<?php echo Yii::t('main','Articles Manager')?></a></li>
 			<li><a class="yt-valign <?php if($module =='genre' && $controller=='manager') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/genre/manager/admin');?>"><i class="glyphicon glyphicon-book icon-blue"></i>&nbsp;<?php echo Yii::t('main','Genre Manager')?></a></li>
 			<li><a class="yt-valign <?php if($module=='media') echo 'actived';?>" href="<?php echo Yii::app()->createUrl('/media/manage');?>"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;<?php echo Yii::t('main','Media Manager')?></a></li>
