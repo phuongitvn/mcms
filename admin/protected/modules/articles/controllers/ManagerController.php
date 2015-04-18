@@ -69,8 +69,14 @@ class ManagerController extends AdminController
 		if(isset($_POST['AdminArticlesModel']))
 		{
 			$model->attributes=$_POST['AdminArticlesModel'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->_id));
+            $model->title = $_POST['AdminArticlesModel']['title'];
+			if($model->save()) {
+                $filePath = Yii::app()->params['temp'].$_POST['AdminArticlesModel']['thumb'];
+                if(file_exists($filePath)){
+                   $thumb = AdminArticlesModel::model()->processThumb($filePath,$model->_id);
+                }
+                $this->redirect(array('view', 'id' => $model->_id));
+            }
 		}
 
 		$this->render('create',array(
@@ -89,12 +95,17 @@ class ManagerController extends AdminController
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['AdminArticlesModel']))
 		{
 			$model->attributes=$_POST['AdminArticlesModel'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->_id));
+            //$model->title = $_POST['AdminArticlesModel']['title'];
+			if($model->save()){
+                $filePath = Yii::app()->params['temp'].$_POST['AdminArticlesModel']['thumb'];
+                if(file_exists($filePath)){
+                    $thumb = AdminArticlesModel::model()->processThumb($filePath,$model->_id);
+                }
+                $this->redirect(array('view','id'=>$model->_id));
+            }
 		}
 
 		$this->render('update',array(
