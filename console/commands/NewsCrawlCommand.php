@@ -124,12 +124,8 @@ class NewsCrawlCommand extends CConsoleCommand
                 $feed = FeedModel::model()->findByPk(new MongoId($_id));
                 $thumbPath = str_replace($storage,'',$fileDest);
                 $feed->thumb = $thumbPath;
-                $res = $feed->save();
-                if($res){
-                    //change status to published
-                    $feed->status = 1;
-                    return $feed->save();
-                }
+                $feed->status = 1;
+                return $feed->save();
             }
         }
     }
