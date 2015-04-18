@@ -1,9 +1,9 @@
 <?php
 return array(
 	'params'=>array(
-        'storage'       =>'E:\source\storage',
-        'temp'          =>'E:\source\storage\tmp',
-        'feed_path'     =>'E:\source\storage\feed',
+        'storage'       =>'E:\source\storage\\',
+        'temp'          =>'E:\source\storage\tmp\\',
+        'feed_path'     =>'E:\source\storage\feed\\',
         'cdn_url'      =>'http://localhost:1111',
 		'site_url'		=>	SITE_URL,
 		'site_path'		=>	SITE_PATH,

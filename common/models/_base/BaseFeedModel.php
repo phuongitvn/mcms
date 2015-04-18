@@ -29,4 +29,15 @@ class BaseFeedModel extends EMongoDocument
     {
         return 'feed';
     }
+    public function rules()
+    {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('title ,introtext ,fulltext ,genre ,tags ,views ,thumb ,comments ,url_source ,source ,created_datetime ,updated_datetime ,active_datetime ,created_by ,status', 'safe'),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            //array('_id, name, code, description, cat_id, status, created_datetime, updated_datetime, created_by', 'safe', 'on'=>'search'),
+        );
+    }
 }

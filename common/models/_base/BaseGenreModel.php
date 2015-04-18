@@ -23,4 +23,10 @@ class BaseGenreModel extends EMongoDocument
     {
         return 'genre';
     }
+    public function rules()
+    {
+        return array(
+            array('name ,code ,description ,parent ,created_datetime ,updated_datetime ,position ,created_by ,status','safe')
+        );
+    }
 }

@@ -22,6 +22,7 @@ class FeedModel extends BaseFeedModel
             $copy = $fileSystem->copy($tmpFile,$fileDest);
             if($copy){
                 $feed = self::model()->findByPk(new MongoId($_id));
+                $fileDest = str_replace($storage,'',$fileDest);
                 $feed->thumb = $fileDest;
                 $res = $feed->save();
                 return $res;
@@ -29,7 +30,10 @@ class FeedModel extends BaseFeedModel
         }
     }
     public function getAvatarUrl($img){
-        $urlFile = str_replace('_','/',$img);
+        if(empty($img)){
+            return SITE_ADMIN_URL.'/images/default.png';
+        }
+        $urlFile = str_replace(DS,'/',$img);
         return Yii::app()->params['cdn_url'].$urlFile;
     }
 }
