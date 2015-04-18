@@ -2,8 +2,10 @@
 class ListViewWidget extends CWidget
 {
     public $data = null;
+    public $layout='';
     public function run(){
-        $this->render('listview', array(
+        $view = $this->layout;
+        $this->render('listview'.$view, array(
             'data'=>$this->data
         ));
     }
