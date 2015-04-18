@@ -133,7 +133,7 @@
 .el-rte .statusbar{height:21px;padding:0 9px;font:11px/21px 'monaco','andale mono','lucida console',monospace;background-color:#eee;border: 1px solid #ccc; border-top:0}
 .el-rte-rtl .statusbar{direction:rtl}
 .el-rte .tabsbar{display:block}
-.el-rte .tabsbar .tab{float:left;margin-right:2px;padding:6px 17px;font-size:.82em;font-weight:bold;color:#777;text-align:center;border:1px solid #ccc;border-top:0;background:#fff;cursor:default}
+.el-rte .tabsbar .tab{float:left;margin-right:2px;padding:6px 17px;font-size:.82em;font-weight:bold;color:#777;text-align:center;border:1px solid #ccc;border-top:0;background:#fff;cursor:default;border-radius: 0 0 4px 4px}
 .el-rte .tabsbar div.active{background:#eee;color:#444;}
 .el-rte-rtl .tabsbar .tab{float:right}
 .el-rte .toolbar ul li.el-select{height:22px;width:120px;border:1px solid #ccc;font-size:.82em;cursor:default;background-position:-475px -30px}
