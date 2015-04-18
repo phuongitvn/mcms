@@ -69,13 +69,15 @@ class ManagerController extends AdminController
 		if(isset($_POST['AdminArticlesModel']))
 		{
 			$model->attributes=$_POST['AdminArticlesModel'];
-            $model->title = $_POST['AdminArticlesModel']['title'];
+            $model->status = (int)$_POST['AdminArticlesModel']['status'];
 			if($model->save()) {
                 $filePath = Yii::app()->params['temp'].$_POST['AdminArticlesModel']['thumb'];
                 if(file_exists($filePath)){
                    $thumb = AdminArticlesModel::model()->processThumb($filePath,$model->_id);
                 }
                 $this->redirect(array('view', 'id' => $model->_id));
+            }else{
+                $error = $model->getErrors();
             }
 		}
 
@@ -98,7 +100,7 @@ class ManagerController extends AdminController
 		if(isset($_POST['AdminArticlesModel']))
 		{
 			$model->attributes=$_POST['AdminArticlesModel'];
-            //$model->title = $_POST['AdminArticlesModel']['title'];
+            $model->status = (int)$_POST['AdminArticlesModel']['status'];
 			if($model->save()){
                 $filePath = Yii::app()->params['temp'].$_POST['AdminArticlesModel']['thumb'];
                 if(file_exists($filePath)){

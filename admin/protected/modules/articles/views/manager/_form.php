@@ -152,7 +152,8 @@
             </label>
         </div>
 
-		<?php echo $form->error($model,'status'); ?>
+		<?php
+        echo $form->error($model,'status'); ?>
 	</div>
 
 	<div class="row buttons">
