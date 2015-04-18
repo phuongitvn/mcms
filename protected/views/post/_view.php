@@ -1,23 +1,25 @@
+<?php
+    $link = Yii::app()->createUrl('/post/view', array('id'=>$article->_id,'url_key'=>Common::makeFriendlyUrl($article->title)));
+    $image = FeedModel::model()->getAvatarUrl($article->thumb);
+?>
 <div class="post">
 	<div class="title">
-		<?php echo CHtml::link(CHtml::encode($data->title), $data->url); ?>
+		<?php echo CHtml::link(CHtml::encode($article->title), $link); ?>
 	</div>
 	<div class="author">
-		posted by <?php echo $data->author->username . ' on ' . date('F j, Y',$data->create_time); ?>
+		posted by <?php echo $article->created_by . ' on ' . $article->created_datetime; ?>
 	</div>
 	<div class="content">
 		<?php
-			$this->beginWidget('CMarkdown', array('purifyOutput'=>true));
-			echo $data->content;
-			$this->endWidget();
+			echo $article->fulltext;
 		?>
 	</div>
 	<div class="nav">
 		<b>Tags:</b>
-		<?php echo implode(', ', $data->tagLinks); ?>
+		<?php echo $article->tags; ?>
 		<br/>
-		<?php echo CHtml::link('Permalink', $data->url); ?> |
-		<?php echo CHtml::link("Comments ({$data->commentCount})",$data->url.'#comments'); ?> |
-		Last updated on <?php echo date('F j, Y',$data->update_time); ?>
+		<?php echo CHtml::link('Permalink', $link); ?> |
+		<?php echo CHtml::link("Comments ({$article->comments})",$link.'#comments'); ?> |
+		Last updated on <?php echo $article->updated_datetime; ?>
 	</div>
 </div>

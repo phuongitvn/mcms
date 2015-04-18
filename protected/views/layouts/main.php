@@ -18,6 +18,9 @@
     $cs->registerMetaTag('Funny pics, GIFs, videos, memes, cute', 'title', NULL);
     $cs->registerMetaTag('You are looking at the Fan2Meme.com! Fan2Meme.com is the easiest way to have fun!', 'description', NULL);
     $cs->registerMetaTag('fan2meme,jokes,interesting,cool,fun collection, prank, admire,fun,humor,humour,just for fun.', 'keywords', NULL);
+
+    $controller = Yii::app()->controller->id;
+    $action = Yii::app()->controller->action->id;
     ?>
 </head>
 <body class="mobile-screen">
@@ -59,7 +62,33 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 <?php include_once("analyticstracking.php") ?>
-	<div id="main"><?php echo $content;?></div>
+	<div id="main">
+        <div id="wrr-main">
+            <header>
+                <div id="banner-top">
+                    <div class="wrr-banner-top wrr-s">
+                        <div id="logo">
+                            <h1><a href="/"><img style="margin-top: 10px" width="155" src="/images/logo.png" /></a></h1>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu">
+                    <div class="wr-menu wrr-s">
+                        <ul>
+                            <li><a href="/" <?php if($controller=='site' && $action=='index'){?>class="active"<?php }?>>News</a></li>
+                            <li><a href="http://fan2clip.com/" target="_blank">Life</a></li>
+                            <li><a href="http://fan2clip.com/" target="_blank">Internet</a></li>
+                            <li><a href="http://fan2clip.com/" target="_blank">Travel</a></li>
+                            <li><a href="http://fan2clip.com/" target="_blank">Health</a></li>
+                            <li><a href="http://fan2clip.com/" target="_blank">Sports</a></li>
+                            <li><a href="http://fan2clip.com/" target="_blank">More</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <?php echo $content;?>
+        </div>
+    </div>
     <div id="footer">
         <div class="wrr-footer">
             <div class="wr-ftl">Fan2Meme &#169;2015</div>
