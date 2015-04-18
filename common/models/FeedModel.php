@@ -18,9 +18,15 @@ class FeedModel extends BaseFeedModel
         $res_get_file = FileRemote::getFromUrl($imgsrc,$tmpFile);
         if ($res_get_file && file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
-            $fileSystem = new Filesystem();
-            $copy = $fileSystem->copy($tmpFile,$fileDest);
-            if($copy){
+            /*$fileSystem = new Filesystem();
+            $copy = $fileSystem->copy($tmpFile,$fileDest);*/
+
+            $width = Yii::app()->params['profile_image']['thumb']['width'];
+            $height = Yii::app()->params['profile_image']['thumb']['height'];
+            $resizeObj = new ResizeImage($tmpFile);
+            $resizeObj->resizeImage($width, $height, 0);
+            $resizeObj->saveImage($fileDest, 100);
+            if($resizeObj){
                 $feed = self::model()->findByPk(new MongoId($_id));
                 $fileDest = str_replace($storage,'',$fileDest);
                 $feed->thumb = $fileDest;
