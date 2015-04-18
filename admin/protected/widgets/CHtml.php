@@ -1645,6 +1645,7 @@ EOD;
 		self::clientChange('change',$htmlOptions);
 		if($model->hasErrors($attribute))
 			self::addErrorCss($htmlOptions);
+        $htmlOptions['class']=isset($htmlOptions['class'])?'form-control '.$htmlOptions['class']:"form-control";
 		if(isset($htmlOptions['value']))
 		{
 			$text=$htmlOptions['value'];
