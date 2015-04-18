@@ -4,6 +4,7 @@ body
 	padding: 0;
 	color: #333;
 	font: normal x-small verdana,arial,helvetica,sans-serif;
+    line-height: 18px;
     #font-family: 'Proxima Nova', Helvetica, sans-serif;
 }
 ul{
@@ -28,7 +29,7 @@ p{
     top: 0;
 }
 #main-body{
-    margin-top: 75px;
+    margin-top: 15px;
     min-height: 200px;
 }
 .wrr-header{
@@ -84,12 +85,12 @@ p{
     width: 70%;
     float: left;
 }
-.col-50{
-    width: 50%;
+.col-52{
+    width: 52%;
     float: left;
 }
-.col-34{
-    width: 34%;
+.col-32{
+    width: 32%;
     float: left;
 }
 .col-16{
@@ -123,7 +124,6 @@ header{
 }
 #menu{
     background: #f4f4f4;
-    margin-right: 10px;
 }
 #logo h1{
     margin: 0
@@ -164,15 +164,15 @@ ul.items-listview>li{
     list-style-type: none;
     overflow: hidden;
     border-bottom: 1px solid #EEE;
-    padding: 15px 0 15px 150px;
+    padding: 15px 0 15px 135px;
 }
 ul.items-listview li h2{
     margin-bottom: 5px;
     margin-top: 0;
 }
 ul.items-listview li h2 a{
-    font-size: 20px;
-    font-weight: normal;
+    font-size: 16px;
+    font-weight: 600;
 }
 ul.items-listview li h2 a:hover{
     color: #D24025;
@@ -191,7 +191,6 @@ ul.items-listview li .vil-info{
     font-size: 13px;
 }
 ul.items-listview li .vil-info .intro{
-    font-weight: bold;
     font-size: 12px;
 }
 .see{
@@ -494,4 +493,29 @@ ul.social-like li{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+._vertical ul.items-listview>li{
+    padding: 0;
+    margin-bottom: 15px;
+    border-bottom: 0;
+}
+._vertical ul.items-listview li .vil-thumb{
+    margin: 0;
+    float: none;
+}
+._vertical ul.items-listview li .wrr-thumb{
+    float: none;
+    padding-right: 0;
+}
+._vertical ul.items-listview li .wrr-thumb img{
+    width: 100%;
+}
+._vertical ul.items-listview li h2 a{
+    color: #333;
+}
+._vertical ul.items-listview li h2 a:hover{
+    color: #D24025;
+}
+._image ul.items-listview>li{
+    margin-bottom: 0;
 }
