@@ -3,9 +3,12 @@ body
 	margin: 0;
 	padding: 0;
 	color: #333;
-	font: normal x-small verdana,arial,helvetica,sans-serif;
+	#font-family: Georgia,Serif;
+	font-family: Roboto,"Helvetica Neue","Helvetica",Arial,"San-serif";
     line-height: 18px;
     #font-family: 'Proxima Nova', Helvetica, sans-serif;
+    background: #f4f4f4;
+    font-size: 16px;
 }
 ul{
     margin: 0;
@@ -17,9 +20,6 @@ ul li{
 a{
     text-decoration: none;
     color: #07e;
-}
-p{
-    font-size: small;
 }
 #header{
     position: fixed;
@@ -35,10 +35,6 @@ p{
 .wrr-header{
     overflow: hidden;
 }
-.wrr-s{
-    width: 1080px;
-    margin: 0 auto;
-}
 #menu ul{
     margin: 0;
     padding: 0;
@@ -50,17 +46,18 @@ p{
     display: block;
     padding: 0 20px;
     font-size: 16px;
-    color: #333;
+    color: #fff;
     text-decoration: none;
     line-height: 45px;
 }
 #menu ul li a:hover{
     background: #f9f9f9;
 }
-#menu ul li a.active{
+#menu ul li a.active,
+#menu ul li a:hover{
     border-bottom: 1px solid #ff0000;
-    font-weight: bold;
     background: #f9f9f9;
+    color: #0076A3;
 }
 .wr-menu{
     overflow: hidden;
@@ -102,8 +99,13 @@ p{
     float: left;
     min-height: 100px;
 }
+.col-34{
+    width: 34%;
+    float: left;
+    min-height: 100px;
+}
 .col-66{
-    width: 66.7%;
+    width: 66%;
     float: left;
     min-height: 100px;
 }
@@ -117,13 +119,14 @@ p{
     float: left;
     min-height: 100px;
 }
-.wr-col-r{
+.wr-col-r,
+.wr-col-c{
     padding: 10px;
 }
 header{
 }
 #menu{
-    background: #f4f4f4;
+    background: #0076A3;
 }
 #logo h1{
     margin: 0
@@ -172,7 +175,11 @@ ul.items-listview li h2{
 }
 ul.items-listview li h2 a{
     font-size: 16px;
-    font-weight: 600;
+    font-weight: normal;
+    color: #333;
+}
+.column1 ul.items-listview li h2 a{
+    font-weight: bold;
 }
 ul.items-listview li h2 a:hover{
     color: #D24025;
@@ -180,7 +187,6 @@ ul.items-listview li h2 a:hover{
 ul.items-listview li .wrr-thumb{
     padding-right: 15px;
     padding-top: 0;
-    padding-bottom: 10px;
     float: left;
 }
 ul.items-listview li .vil-thumb{
@@ -466,7 +472,7 @@ ul.social-like li{
     display: block;
     width: 12px;
     height: 12px;
-    margin: 0 5px 0 0;
+    margin: 3px 5px 0 0;
     float: left;
 }
 .meta-small li{
@@ -487,6 +493,13 @@ ul.social-like li{
 }
 .time-icon{
     background-position: 0 -14px;
+}
+.listview h3.title{
+    margin: 0;
+    background: #F7922F;
+    padding: 5px;
+    color: #fff;
+    margin-bottom: 10px;
 }
 .vil-info .author{
     max-width: 130px;
@@ -510,6 +523,9 @@ ul.social-like li{
 ._vertical ul.items-listview li .wrr-thumb img{
     width: 100%;
 }
+._vertical ul.items-listview li h2{
+    margin-top: 10px
+}
 ._vertical ul.items-listview li h2 a{
     color: #333;
 }
@@ -517,5 +533,35 @@ ul.social-like li{
     color: #D24025;
 }
 ._image ul.items-listview>li{
-    margin-bottom: 0;
+    margin-bottom: 15px;
+}
+.post{
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.7em;
+    color: #555;
+    padding: 0;
+    overflow: hidden;
+}
+#wrr-main{
+    width: 1020px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px 0px rgba(50,50,50,0.15);
+    background: #fff;
+}
+.home{
+    width: 28px;
+    height: 45px;
+    background: transparent url(../images/home_white.png) no-repeat center center;
+    text-indent: -10000px;
+}
+#menu ul li a.home.active,
+#menu ul li a.home:hover{
+    border-bottom: 1px solid #ff0000;
+    background: #f9f9f9 url(../images/home.png) no-repeat center center;
+    color: #0076A3;
+}
+.post .title h1{
+    line-height: 35px;
 }
