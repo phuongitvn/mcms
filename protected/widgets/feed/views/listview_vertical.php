@@ -1,5 +1,6 @@
 <?php if($data):?>
     <div class="listview <?php echo $this->layout;?>">
+        <h3 class="title"><?php echo $title;?></h3>
         <ul class="items-listview">
             <?php foreach($data as $item):?>
                 <?php

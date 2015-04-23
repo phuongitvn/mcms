@@ -34,10 +34,12 @@ return CMap::mergeArray(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'post/<id:\d+>/<title:.*?>'=>'post/view',
-				'posts/<tag:.*?>'=>'post/index',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                '<_c:\w+>/<url_key:[a-zA-Z0-9-]+>,<id:\w+>' => '<_c>/view',
+                '<_c:\w+>/<_a:\w+>/<id:\w+>' => '<_c>/<_a>',
+                '<_c:\w+>/<_a:\w+>' => '<_c>/<_a>',
 			),
+            'urlSuffix'		=>	'.html',
+            'showScriptName'=>false,
 		),
 		'log'=>array(
 			'class'=>'CLogRouter',

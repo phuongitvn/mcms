@@ -31,3 +31,7 @@ $this->pageTitle=$article->title;
 	<?php endif; ?>
 
 </div><!-- comments -->
+
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'column2')); ?>
+<?php $this->widget('application.widgets.feed.ListViewWidget', array('data'=>$data, 'title'=>'You may also like','info_extra'=>false));?>
+<?php $this->endWidget();?>

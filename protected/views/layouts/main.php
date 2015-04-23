@@ -53,20 +53,12 @@
     }
 
 </style>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=417326001770427&version=v2.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
 <?php include_once("analyticstracking.php") ?>
 	<div id="main">
         <div id="wrr-main">
             <header>
                 <div id="banner-top">
-                    <div class="wrr-banner-top wrr-s">
+                    <div class="wrr-banner-top">
                         <div id="logo">
                             <h1><a href="/"><img style="margin-top: 10px" width="155" src="/images/logo.png" /></a></h1>
                         </div>
@@ -75,7 +67,8 @@
                 <div id="menu">
                     <div class="wr-menu wrr-s">
                         <ul>
-                            <li><a href="/" <?php if($controller=='site' && $action=='index'){?>class="active"<?php }?>>News</a></li>
+                            <li><a class="home <?php if($controller=='site' && $action=='index'){?>active<?php }?>" href="/">Home</a></li>
+                            <li><a href="/">News</a></li>
                             <li><a href="http://fan2clip.com/" target="_blank">Life</a></li>
                             <li><a href="http://fan2clip.com/" target="_blank">Internet</a></li>
                             <li><a href="http://fan2clip.com/" target="_blank">Travel</a></li>

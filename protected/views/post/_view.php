@@ -4,7 +4,7 @@
 ?>
 <div class="post">
 	<div class="title">
-		<?php echo CHtml::link(CHtml::encode($article->title), $link); ?>
+		<h1><?php echo CHtml::encode($article->title); ?></h1>
 	</div>
 	<div class="author">
 		posted by <?php echo $article->created_by . ' on ' . $article->created_datetime; ?>

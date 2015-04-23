@@ -1,5 +1,8 @@
 <?php if($data):?>
     <div class="listview">
+        <?php if(!empty($title)){?>
+        <h3 class="title"><?php echo $title;?></h3>
+        <?php }?>
         <ul class="items-listview">
             <?php foreach($data as $item):?>
                 <?php
@@ -15,13 +18,15 @@
                         </div>
                         <div class="vil-info">
                             <h2><a href="<?php echo $link;?>"><?php echo $item->title;?></a></h2>
-                            <p class="intro"><?php echo $item->introtext;?></p>
-                            <ul class="meta-small">
-                                <li><a class="author" href="#"><i class="icon author-icon"></i><?php echo $item->created_by;?>phuong nguyen</a></li>
-                                <li><a class="views" href="#"><i class="icon views-icon"></i><?php echo $item->created_by;?>146</a></li>
-                                <li><a class="comments" href="#"><i class="icon comments-icon"></i><?php echo $item->created_by;?>comments</a></li>
-                                <li><a class="time" href="#"><i class="icon time-icon"></i><?php echo $item->created_by;?>15 minutes ago</a></li>
-                            </ul>
+                            <?php if($this->info_extra):?>
+                                <p class="intro"><?php echo $item->introtext;?></p>
+                                <ul class="meta-small">
+                                    <li><a class="author" href="#"><i class="icon author-icon"></i><?php echo $item->created_by;?>phuong nguyen</a></li>
+                                    <li><a class="views" href="#"><i class="icon views-icon"></i><?php echo $item->created_by;?>146</a></li>
+                                    <li><a class="comments" href="#"><i class="icon comments-icon"></i><?php echo $item->created_by;?>comments</a></li>
+                                    <li><a class="time" href="#"><i class="icon time-icon"></i><?php echo $item->created_by;?>15 minutes ago</a></li>
+                                </ul>
+                            <?php endif;?>
                         </div>
                     </div>
                 </li>

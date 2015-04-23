@@ -19,10 +19,21 @@ class PostController extends Controller
 		if(!$article){
             throw new CHttpException(404,"There is not found!");
         }
-
+        $limit = 10;
+        $offset = 0;
+        $c = array(
+            'conditions'=>array(
+                'status'=>array('==' => 1),
+            ),
+            'sort'=>array('_id'=>EMongoCriteria::SORT_DESC),
+            'limit'=> $limit,
+            'offset'=> $offset
+        );
+        $data = FeedModel::model()->findAll($c);
 		$this->render('view',array(
 			'article'=>$article,
 			//'comment'=>$comment,
+            'data'=>$data
 		));
 	}
 
