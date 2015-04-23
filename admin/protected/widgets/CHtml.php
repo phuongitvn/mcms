@@ -924,7 +924,6 @@ class CHtml
 		self::clientChange('change',$htmlOptions);
 		$options="\n".self::listOptions($select,$data,$htmlOptions);
 		$hidden='';
-
 		if(!empty($htmlOptions['multiple']))
 		{
 			if(substr($htmlOptions['name'],-2)!=='[]')
@@ -1808,6 +1807,7 @@ EOD;
 			self::addErrorCss($htmlOptions);
 
 		$hidden='';
+        $htmlOptions['class']=isset($htmlOptions['class'])?'form-control '.$htmlOptions['class']:"form-control";
 		if(!empty($htmlOptions['multiple']))
 		{
 			if(substr($htmlOptions['name'],-2)!=='[]')

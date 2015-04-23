@@ -24,7 +24,7 @@
                                     <li><a class="author" href="#"><i class="icon author-icon"></i><?php echo $item->created_by;?>phuong nguyen</a></li>
                                     <li><a class="views" href="#"><i class="icon views-icon"></i><?php echo $item->created_by;?>146</a></li>
                                     <li><a class="comments" href="#"><i class="icon comments-icon"></i><?php echo $item->created_by;?>comments</a></li>
-                                    <li><a class="time" href="#"><i class="icon time-icon"></i><?php echo $item->created_by;?>15 minutes ago</a></li>
+                                    <li><a class="time" href="#"><i class="icon time-icon"></i><?php echo date('l, F jS Y \a\t g:ia', strtotime((string) $item->created_datetime));?></a></li>
                                 </ul>
                             <?php endif;?>
                         </div>

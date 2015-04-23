@@ -218,7 +218,6 @@ body>#body-container{
 .form input[type="text"],
 .form textarea,
 .form select{
-	width: 200px;
 	padding: 5px;
 	border: 1px solid #D3D3D3;
 }

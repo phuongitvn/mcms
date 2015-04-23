@@ -74,7 +74,10 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'genre'); ?>
-		<?php echo $form->textField($model,'genre'); ?>
+        <?php
+            $data = CHtml::listData(AdminGenreModel::model()->findAll(),'code','name');
+            echo $form->dropDownList($model,'genre',$data);
+        ?>
 		<?php echo $form->error($model,'genre'); ?>
 	</div>
 
