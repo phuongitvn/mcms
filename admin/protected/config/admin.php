@@ -22,6 +22,7 @@ return CMap::mergeArray(
             'application.widgets._base.*',
         ),
         'modules'=>array(
+            'media',
             'genre',
             'articles',
             'gii' => array(

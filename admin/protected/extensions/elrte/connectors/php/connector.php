@@ -28,8 +28,8 @@ class elFinderLogger implements elFinderILogger {
 }
 
 $opts = array(
-	'root'            => $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'storage/media',  // path to root directory
-	'URL'             => '/storage/media/', // root directory URL
+	'root'            => 'E:\source\storage\media\\',  // path to root directory
+	'URL'             => 'http://localhost/storage/media/', // root directory URL
 	'rootAlias'       => 'Media',       // display this instead of root directory name
 	//'uploadAllow'   => array('images/*'),
 	//'uploadDeny'    => array('all'),
