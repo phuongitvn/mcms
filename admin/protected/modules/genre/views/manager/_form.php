@@ -29,20 +29,23 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'parent'); ?>
-		<?php echo $form->textField($model,'parent'); ?>
+		<?php
+            $c = array(
+                'conditions'=>array(
+                    'status'=>array('==' => 1),
+                ),
+            );
+            if($model->_id){
+                $c['conditions']['_id'] = array('<>'=>$model->_id);
+            }
+            $genres = AdminGenreModel::model()->findAll($c);
+            $data = array();
+            foreach($genres as $genre){
+                $data["{$genre->_id}"] = $genre->name;
+            }
+        echo CHtml::dropDownList('AdminGenreModel[parent]',(string)$model->parent,$data, array('prompt'=>'--None--','class'=>'form-control'));
+        ?>
 		<?php echo $form->error($model,'parent'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_datetime'); ?>
-		<?php echo $form->textField($model,'created_datetime'); ?>
-		<?php echo $form->error($model,'created_datetime'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated_datetime'); ?>
-		<?php echo $form->textField($model,'updated_datetime'); ?>
-		<?php echo $form->error($model,'updated_datetime'); ?>
 	</div>
 
 	<div class="row">
@@ -59,13 +62,23 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
+        <div class="btn-group options-group" data-toggle="buttons">
+            <label class="btn btn-default <?php if($model->status==1) echo 'active';?>">
+                <input type="radio" name="AdminGenreModel[status]" id="option1" value="1" autocomplete="off" <?php if($model->status==1) echo 'checked';?>> Actived
+            </label>
+            <label class="btn btn-default <?php if($model->status==0) echo 'active';?>">
+                <input type="radio" name="AdminGenreModel[status]" id="option2" value="0" autocomplete="off" <?php if($model->status==0) echo 'checked';?>> Wait Approve
+            </label>
+            <label class="btn btn-default <?php if($model->status==2) echo 'active';?>">
+                <input type="radio" name="AdminGenreModel[status]" id="option3" value="2" autocomplete="off" <?php if($model->status==2) echo 'checked';?>> Deleted
+            </label>
+        </div>
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+    <div class="row buttons">
+        <?php $this->renderPartial('application.views.layouts._button_form');?>
+    </div>
 
 <?php $this->endWidget(); ?>
 

@@ -143,14 +143,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary <?php if($model->status==1) echo 'active';?>">
+        <div class="btn-group options-group" data-toggle="buttons">
+            <label class="btn btn-default <?php if($model->status==1) echo 'active';?>">
                 <input type="radio" name="AdminArticlesModel[status]" id="option1" value="1" autocomplete="off" <?php if($model->status==1) echo 'checked';?>> Actived
             </label>
-            <label class="btn btn-primary <?php if($model->status==0) echo 'active';?>">
+            <label class="btn btn-default <?php if($model->status==0) echo 'active';?>">
                 <input type="radio" name="AdminArticlesModel[status]" id="option2" value="0" autocomplete="off" <?php if($model->status==0) echo 'checked';?>> Wait Approve
             </label>
-            <label class="btn btn-primary <?php if($model->status==2) echo 'active';?>">
+            <label class="btn btn-default <?php if($model->status==2) echo 'active';?>">
                 <input type="radio" name="AdminArticlesModel[status]" id="option3" value="2" autocomplete="off" <?php if($model->status==2) echo 'checked';?>> Deleted
             </label>
         </div>
