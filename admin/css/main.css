@@ -331,3 +331,9 @@ h3.board-title{
 .w-100{
     width: 100%!important;
 }
+.options-group .btn-default.active,
+.options-group .btn-default:hover{
+    color: #fff;
+    background-color: #3276b1;
+    border-color: #285e8e;
+}
