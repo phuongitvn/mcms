@@ -50,7 +50,7 @@ $url_key = Yii::app()->request->getParam('url_key','');
             <li style="float: right;margin-right: 10px;">
                 <div class="search">
                     <form action="<?php echo Yii::app()->createUrl('/search/index')?>" method="get">
-                        <input type="text" name="key_word" value="" />
+                        <input type="text" name="keyword" value="<?php echo isset($_GET['keyword'])?CHtml::encode($_GET['keyword']):"";?>" />
                         <button type="submit">Search</button>
                     </form>
                 </div>
