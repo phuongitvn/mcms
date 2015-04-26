@@ -35,32 +35,8 @@ a{
 .wrr-header{
     overflow: hidden;
 }
-#menu ul{
-    margin: 0;
-    padding: 0;
-}
-#menu ul li{
-    float: left;
-}
-#menu ul li a{
-    display: block;
-    padding: 0 20px;
-    font-size: 16px;
-    color: #fff;
-    text-decoration: none;
-    line-height: 45px;
-}
-#menu ul li a:hover{
-    background: #f9f9f9;
-}
-#menu ul li a.active,
-#menu ul li a:hover{
-    border-bottom: 1px solid #ff0000;
-    background: #f9f9f9;
-    color: #0076A3;
-}
 .wr-menu{
-    overflow: hidden;
+    height: 46px;
 }
 .wrr-banner-top{
     padding: 20px 0;
@@ -556,12 +532,98 @@ ul.social-like li{
     background: transparent url(../images/home_white.png) no-repeat center center;
     text-indent: -10000px;
 }
-#menu ul li a.home.active,
-#menu ul li a.home:hover{
+/*Menu*/
+ul.main-nv{
+    margin: 0;
+    padding: 0;
+}
+ul.main-nv > li{
+    float: left;
+}
+ul.main-nv li a{
+    font-family: 'Open Sans Condensed',sans-serif;
+    display: block;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+ul.main-nv li a.active,
+ul.main-nv li a:hover{
+    border-bottom: 1px solid #ff0000;
+    background: #f9f9f9;
+    color: #0076A3;
+    #background: #2c3e50;
+    #color: #fff;
+}
+ul.main-nv li a.home.active,
+ul.main-nv li a.home:hover{
     border-bottom: 1px solid #ff0000;
     background: #f9f9f9 url(../images/home.png) no-repeat center center;
     color: #0076A3;
 }
 .post .title h1{
     line-height: 35px;
+}
+.dropdown,
+.flyout {
+    position: relative;
+}
+/*.dropdown:after {
+    content: "\25BC";
+    font-size: .5em;
+    display: block;
+    position: absolute;
+    top: 38%;
+    right: 12%;
+}*/
+.drop-nav,
+.flyout-nav {
+    position: absolute;
+    display: none;
+    background: #0076A3;
+    top: 46px;
+    box-shadow: 2px 1px 3px #333;
+}
+.drop-nav li a {
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+.dropdown:hover > .drop-nav,
+.flyout:hover > .flyout-nav {
+    display: block;
+}
+.flyout-nav {
+    left: 100%;
+    top: 0;
+}
+ul.main-nv li ul li{
+    min-width: 200px;
+}
+
+.search{
+    line-height: 46px;
+    height: 46px;
+}
+.search input{
+    border-radius: 3px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    color: #333;
+}
+.search button{
+    width: 30px;
+    height: 30px;
+    background: url(../images/search.png) no-repeat;
+    border: 0;
+    text-indent: -10000px;
+}
+.separator{
+    background: rgba(255,255,255,.2);
+    width: 1px;
+    height: 26px;
+    display: block;
+    margin: 10px 0;
 }
