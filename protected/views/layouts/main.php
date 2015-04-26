@@ -65,17 +65,17 @@
                 <?php include_once("_menu_top.php") ?>
             </header>
             <?php echo $content;?>
-        </div>
-    </div>
-    <div id="footer">
-        <div class="wrr-footer">
-            <div class="wr-ftl">Fan2Meme &#169;2015</div>
-            <div class="wr-ftr">
-                <ul class="term op">
-                    <li><a href="<?php echo Yii::app()->createUrl('/site/contact')?>">Contacts</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Term</a></li>
-                </ul>
+            <div id="footer">
+                <div class="wrr-footer">
+                    <div class="wr-ftl">Tips &#169;2015</div>
+                    <div class="wr-ftr">
+                        <ul class="term op">
+                            <li><a href="<?php echo Yii::app()->createUrl('/site/contact')?>">Contacts</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Term</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
