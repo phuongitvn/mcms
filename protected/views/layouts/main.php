@@ -19,8 +19,6 @@
     $cs->registerMetaTag('You are looking at the Fan2Meme.com! Fan2Meme.com is the easiest way to have fun!', 'description', NULL);
     $cs->registerMetaTag('fan2meme,jokes,interesting,cool,fun collection, prank, admire,fun,humor,humour,just for fun.', 'keywords', NULL);
 
-    $controller = Yii::app()->controller->id;
-    $action = Yii::app()->controller->action->id;
     ?>
 </head>
 <body class="mobile-screen">
@@ -64,20 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="menu">
-                    <div class="wr-menu wrr-s">
-                        <ul>
-                            <li><a class="home <?php if($controller=='site' && $action=='index'){?>active<?php }?>" href="/">Home</a></li>
-                            <li><a href="/">News</a></li>
-                            <li><a href="http://fan2clip.com/" target="_blank">Life</a></li>
-                            <li><a href="http://fan2clip.com/" target="_blank">Internet</a></li>
-                            <li><a href="http://fan2clip.com/" target="_blank">Travel</a></li>
-                            <li><a href="http://fan2clip.com/" target="_blank">Health</a></li>
-                            <li><a href="http://fan2clip.com/" target="_blank">Sports</a></li>
-                            <li><a href="http://fan2clip.com/" target="_blank">More</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <?php include_once("_menu_top.php") ?>
             </header>
             <?php echo $content;?>
         </div>

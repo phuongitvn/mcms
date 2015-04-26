@@ -4,6 +4,27 @@ class SiteController extends Controller
 {
 	public $layout='3column';
 
+    public function actionTest()
+    {
+        $limit = 10;
+        $offset = 0;
+        $c = array(
+            'conditions'=>array(
+                'status'=>array('==' => 1),
+                'updated_datetime'=>array('>=' => '2015-04-12 00:00:00','<='=>'2015-05-01 00:00:00'),
+            ),
+            'sort'=>array('updated_datetime'=>EMongoCriteria::SORT_ASC),
+            'limit'=> $limit,
+            'offset'=> $offset
+        );
+        $data = FeedModel::model()->findAll($c);
+        foreach($data as $key => $value){
+            echo $value->updated_datetime;
+            echo '<br />';
+        }
+        echo '<pre>';print_r($data);
+        exit;
+    }
     public function actionIndex()
     {
         $limit = 10;
