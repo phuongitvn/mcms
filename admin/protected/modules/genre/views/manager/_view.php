@@ -11,6 +11,9 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('code')); ?>:</b>
 	<?php echo CHtml::encode($data->code); ?>
 	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('url_key')); ?>:</b>
+	<?php echo CHtml::encode($data->code); ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 	<?php echo CHtml::encode($data->description); ?>

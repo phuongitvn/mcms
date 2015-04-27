@@ -20,6 +20,11 @@
 		<?php echo $form->textField($model,'code'); ?>
 		<?php echo $form->error($model,'code'); ?>
 	</div>
+    <div class="row">
+		<?php echo $form->labelEx($model,'url_key'); ?>
+		<?php echo $form->textField($model,'url_key'); ?>
+		<?php echo $form->error($model,'url_key'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
