@@ -4,6 +4,7 @@ class BaseGenreModel extends EMongoDocument
     public $_id;
     public $name;
     public $code;
+    public $url_key;
     public $description;
     public $parent;
     public $created_datetime;
@@ -26,7 +27,7 @@ class BaseGenreModel extends EMongoDocument
     public function rules()
     {
         return array(
-            array('name ,code ,description ,parent ,created_datetime ,updated_datetime ,position ,created_by ,status','safe')
+            array('name, code, url_key, description ,parent ,created_datetime ,updated_datetime ,position ,created_by ,status','safe')
         );
     }
 }
