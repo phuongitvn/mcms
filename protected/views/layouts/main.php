@@ -64,6 +64,14 @@
                 </div>
                 <?php include_once("_menu_top.php") ?>
             </header>
+            <?php
+            if($this->breadcrumbs){
+                $this->widget('application.widgets.MBreadcrumbs', array(
+                    'links'=>$this->breadcrumbs,
+                    'htmlOptions'=>array('class'=>'breadcrumbs','id'=>'breadcrumb'),
+                ));
+            }
+            ?>
             <?php echo $content;?>
             <div id="footer">
                 <div class="wrr-footer">

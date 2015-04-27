@@ -1,5 +1,9 @@
 <?php
 $this->pageTitle=$article->title;
+$this->breadcrumbs=array(
+    $article->genre=>Yii::app()->createUrl('/category/index', array('url_key'=>Common::makeFriendlyUrl($article->genre))),
+    $article->title,
+);
 ?>
 
 <?php $this->renderPartial('_view', array(
