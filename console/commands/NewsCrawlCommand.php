@@ -78,8 +78,8 @@ class NewsCrawlCommand extends CConsoleCommand
             $feedModel->source = $data['source'];
             $feedModel->genre = $data['genre'];
             $feedModel->comments = 0;
-            $feedModel->created_datetime = new MongoDate();
-            $feedModel->updated_datetime = new MongoDate();
+            $feedModel->created_datetime = date('Y-m-d H:i:s');
+            $feedModel->updated_datetime = date('Y-m-d H:i:s');
             $author = mt_rand(1,20);
             $feedModel->created_by = $author;
             $feedModel->status = $data['status'];
