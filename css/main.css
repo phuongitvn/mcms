@@ -29,7 +29,6 @@ a{
     top: 0;
 }
 #main-body{
-    margin-top: 15px;
     min-height: 200px;
 }
 .wrr-header{
@@ -626,4 +625,25 @@ ul.main-nv li ul li{
     height: 26px;
     display: block;
     margin: 10px 0;
+}
+/*breadcrumb*/
+.breadcrumbs{
+    padding: 5px;
+}
+.breadcrumbs ul li{
+    display: inline;
+}
+.breadcrumbs li a,
+.breadcrumbs span{
+    font-size: 11px;
+}
+.breadcrumbs li a:hover{
+    text-decoration: underline;
+}
+.br-arr{
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    background: url(../images/dv_br.gif) no-repeat center center;
+    vertical-align: middle;
 }
