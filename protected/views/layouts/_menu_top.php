@@ -39,7 +39,7 @@ $url_key = Yii::app()->request->getParam('url_key','');
             </li>
             <li class="separator"></li>
             <li class="dropdown">
-                <a href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'social-media'))?>" target="_blank">Social Media</a>
+                <a href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'social-media'))?>">Social Media</a>
                 <ul class="drop-nav">
                     <li><a href="#">Packing Tips</a></li>
                     <li><a href="#">Air Travel</a></li>
