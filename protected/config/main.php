@@ -9,7 +9,7 @@ return CMap::mergeArray(
     include_once SITE_PATH.'/common/config/common.php',
     array(
 	'basePath'=>dirname(__FILE__).DS.'..',
-	'name'=>'Yii Blog Demo',
+	'name'=>'Health Care Tips',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
