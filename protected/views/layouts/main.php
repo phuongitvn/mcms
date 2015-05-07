@@ -10,6 +10,7 @@
     <meta name="robots" content="follow, index" />
 	<title><?php echo CHtml::encode($this->pageTitle)." | ".Yii::app()->name; ?></title>
     <link rel="icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:100,200,300,400,500,600,700,800,900|Oswald:100,200,300,400,500,600,700,800,900|Oswald:100,200,300,400,500,600,700,800,900&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek,vietnamese" type='text/css'>
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <!--<script type="text/javascript" src="/js/core.js"></script>-->
@@ -58,7 +59,7 @@
                 <div id="banner-top">
                     <div class="wrr-banner-top">
                         <div id="logo">
-                            <h1><a href="/"><img style="margin-top: 10px" width="155" src="/images/logo.png" /></a></h1>
+                            <h1><a class="logoimg" href="/">Health Tips, Beauty, Love, Food care</a></h1>
                         </div>
                     </div>
                 </div>

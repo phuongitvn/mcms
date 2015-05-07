@@ -6,7 +6,7 @@ $url_key = Yii::app()->request->getParam('url_key','');
 <div id="menu">
     <div class="wr-menu wrr-s">
         <ul class="main-nv">
-            <li><a class="home <?php if($controller=='site' && $action=='index'){?>active<?php }?>" href="/">Home</a></li>
+            <li><a class="<?php if($controller=='site' && $action=='index'){?>active<?php }?>" href="/">Home</a></li>
             <li class="separator"></li>
             <li><a href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'news'))?>" class="<?php if($controller=='category' && $action=='index' && $url_key=='news'){?>active<?php }?>">News</a></li>
             <li class="separator"></li>
