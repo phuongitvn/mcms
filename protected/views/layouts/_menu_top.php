@@ -26,18 +26,18 @@ $url_key = Yii::app()->request->getParam('url_key','');
                 </ul>-->
             </li>
             <li class="separator"></li>
-            <li class="dropdown"><a class="<?php if($controller=='category' && $action=='index' && $url_key=='beauty'){?>active<?php }?>" href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'beauty'))?>">Beauty Care</a></li>
+            <li class="dropdown"><a class="<?php if($controller=='category' && $action=='index' && $url_key=='beauty-care'){?>active<?php }?>" href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'beauty-care'))?>">Beauty Care</a></li>
             <li class="separator"></li>
             <li class="dropdown">
                 <a class="<?php if($controller=='category' && $action=='index' && $url_key=='food-fitness'){?>active<?php }?>" href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'food-fitness'))?>" >Food & Fitness</a>
             </li>
             <li class="separator"></li>
             <li class="dropdown">
-                <a class="<?php if($controller=='category' && $action=='index' && $url_key=='work-play'){?>active<?php }?>" href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'tech'))?>" >Work & Play</a>
+                <a class="<?php if($controller=='category' && $action=='index' && $url_key=='work-play'){?>active<?php }?>" href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'work-play'))?>" >Work & Play</a>
             </li>
             <li class="separator"></li>
             <li class="dropdown">
-                <a href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'social-media'))?>">How To</a>
+                <a href="<?php echo Yii::app()->createUrl('/category/index', array('url_key'=>'how-to'))?>">How To</a>
             </li>
             <li style="float: right;margin-right: 10px;">
                 <div class="search">
