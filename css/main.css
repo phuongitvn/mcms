@@ -35,12 +35,15 @@ a{
     overflow: hidden;
 }
 .wr-menu{
-    height: 46px;
+    height: 45px;
 }
 .wrr-banner-top{
     padding: 20px 0;
+    overflow: hidden;
 }
 #logo{
+    float: left;
+    margin-left: 10px;
 }
 .logo{
     height: 45px;
@@ -48,6 +51,13 @@ a{
 }
 .logo img{
     margin-top: 7px;
+}
+.logoimg{
+    width: 242px;
+    height: 61px;
+    background: #fff url(../images/logo.png) no-repeat center center;
+    display: inline-block;
+    text-indent: -10000px;
 }
 .col-3{
     width: 30%;
@@ -101,7 +111,8 @@ a{
 header{
 }
 #menu{
-    background: #0076A3;
+    border-bottom: 5px solid #EEE;
+    border-top: 5px solid #EEE;
 }
 #logo h1{
     margin: 0
@@ -540,26 +551,21 @@ ul.main-nv > li{
     float: left;
 }
 ul.main-nv li a{
-    font-family: 'Open Sans Condensed',sans-serif;
+    font-family: 'Oswald';
     display: block;
     padding: 0 20px;
-    font-size: 16px;
-    color: #fff;
+    font-size: 14px;
+    color: #000;
     text-decoration: none;
     line-height: 45px;
-    text-shadow: 0 1px 0 #5f5f5f;
+    text-transform: uppercase;
 }
-ul.main-nv li a.active,
-ul.main-nv li a:hover{
-    border-bottom: 1px solid #ff0000;
-    background: #f9f9f9;
-    color: #0076A3;
-    #background: #2c3e50;
-    #color: #fff;
+ul.main-nv > li > a.active,
+ul.main-nv > li > a:hover{
+    color: #0093ff;
 }
 ul.main-nv li a.home.active,
 ul.main-nv li a.home:hover{
-    border-bottom: 1px solid #ff0000;
     background: #f9f9f9 url(../images/home.png) no-repeat center center;
     color: #0076A3;
 }
@@ -582,12 +588,16 @@ ul.main-nv li a.home:hover{
 .flyout-nav {
     position: absolute;
     display: none;
-    background: #0076A3;
-    top: 46px;
+    background: #fff;
+    top: 45px;
     box-shadow: 2px 1px 3px #333;
 }
 .drop-nav li a {
     border-bottom: 1px solid rgba(255,255,255,.2);
+}
+.drop-nav li a:hover{
+    background: #0093ff;
+    color: #fff;
 }
 .dropdown:hover > .drop-nav,
 .flyout:hover > .flyout-nav {
