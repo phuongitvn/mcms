@@ -169,7 +169,7 @@ ul.items-listview li h2 a{
     font-weight: bold;
 }
 ul.items-listview li h2 a:hover{
-    color: #D24025;
+    color: #42D0DB;
 }
 ul.items-listview li .wrr-thumb{
     padding-right: 15px;
@@ -564,6 +564,7 @@ ul.main-nv li a{
 ul.main-nv > li > a.active,
 ul.main-nv > li > a:hover{
     color: #fff;
+	background: #80C100;
 }
 ul.main-nv li a.home.active,
 ul.main-nv li a.home:hover{
