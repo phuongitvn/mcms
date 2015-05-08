@@ -113,6 +113,7 @@ header{
 #menu{
     border-bottom: 5px solid #EEE;
     border-top: 5px solid #EEE;
+    background: #42D0DB;
 }
 #logo h1{
     margin: 0
@@ -555,14 +556,14 @@ ul.main-nv li a{
     display: block;
     padding: 0 20px;
     font-size: 15px;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     line-height: 45px;
     text-transform: uppercase;
 }
 ul.main-nv > li > a.active,
 ul.main-nv > li > a:hover{
-    color: #0093ff;
+    color: #fff;
 }
 ul.main-nv li a.home.active,
 ul.main-nv li a.home:hover{
@@ -588,7 +589,7 @@ ul.main-nv li a.home:hover{
 .flyout-nav {
     position: absolute;
     display: none;
-    background: #fff;
+    background: #42D0DB;
     top: 45px;
     box-shadow: 2px 1px 3px #333;
 }
@@ -596,8 +597,8 @@ ul.main-nv li a.home:hover{
     border-bottom: 1px solid rgba(255,255,255,.2);
 }
 .drop-nav li a:hover{
-    background: #0093ff;
-    color: #fff;
+    background: #fff;
+    color: #42D0DB;
 }
 .dropdown:hover > .drop-nav,
 .flyout:hover > .flyout-nav {
