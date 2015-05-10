@@ -85,6 +85,8 @@ class NewsCrawlCommand extends CConsoleCommand
             $feedModel->status = $data['status'];
             $res = $feedModel->save();
             return $feedModel->_id;
+        }else{
+            echo 'exists article'."\n";
         }
         return false;
     }

@@ -33,6 +33,12 @@ class HWCommand extends CConsoleCommand
                 'genre'=>'health-wellness',
                 'source'=>'healthywomen'
         );
+        $cat[] = array(
+            'url'=>'http://www.healthywomen.org/ages-and-stages/healthy-living/beauty-and-aging',
+            'tags'=>'healthy-living,beauty-aging',
+            'genre'=>'beauty-aging',
+            'source'=>'healthywomen'
+        );
         try{
             foreach($cat as $key => $value) {
                 $url = $value['url'];
@@ -63,21 +69,23 @@ class HWCommand extends CConsoleCommand
                     $tag=true;
                     $i=0;
                     while($tag){
-                        if(isset($allArticlesCat[$i])){
+                        if(isset($allArticlesCat[$i])) {
                             $article = $allArticlesCat[$i];
-                            //foreach($allArticlesCat as $article){
+                            $checkExists = $this->isExists($article['link']);
+                            if (!$checkExists) {
+                                //foreach($allArticlesCat as $article){
                                 $html = array();
-                                echo '##Content of '.$article['link'].'##'."\n";
+                                echo '##Content of ' . $article['link'] . '##' . "\n";
                                 $data->setUrl($article['link']);
-                                if(empty($articlesRelated)){
+                                if (empty($articlesRelated)) {
                                     $articlesRelated = $data->getArticlesRelated();
-                                    if(!empty($articlesRelated)){
-                                        foreach($articlesRelated as $key => $d){
+                                    if (!empty($articlesRelated)) {
+                                        foreach ($articlesRelated as $key => $d) {
                                             $articlesRelated[$key]['genre'] = $value['genre'];
                                             $articlesRelated[$key]['source'] = $value['source'];
                                             $articlesRelated[$key]['tags'] = $value['tags'];
                                         }
-                                        $allArticlesCat = CMap::mergeArray($allArticlesCat,$articlesRelated);
+                                        $allArticlesCat = CMap::mergeArray($allArticlesCat, $articlesRelated);
                                         //echo '<pre>';print_r($allArticlesCat);exit;
                                     }
                                 }
@@ -92,20 +100,22 @@ class HWCommand extends CConsoleCommand
                                 $html['source'] = $article['source'];
                                 $html['genre'] = $article['genre'];
                                 $html['tags'] = $article['tags'];
-                                $html['status']=0;
+                                $html['status'] = 0;
                                 $res = $this->addToFeed($html);
-                                if($res){
-                                    echo 'id:'.$res."\n";
+                                if ($res) {
+                                    echo 'id:' . $res . "\n";
                                     //process thumb
-                                    $pthumb = $this->processThumb($res,$html['thumb']);
+                                    $pthumb = $this->processThumb($res, $html['thumb']);
                                 }
-                            //}
-                            $i++;
+                                //}
+                                $i++;
+                            } else {
+                                $tag = false;
+                            }
+
                         }else{
-                            $tag=false;
+                            echo 'This article is exists!'."\n";
                         }
-
-
                     }
 
                 }
@@ -117,7 +127,7 @@ class HWCommand extends CConsoleCommand
     }
     private function addToFeed($data)
     {
-        if(!empty($data['title']) && !$this->isExists($data['link'])) {
+        if(!empty($data['title'])) {
             $feedModel = new FeedModel();
             $feedModel->title = $data['title'];
             $feedModel->introtext = $data['introtext'];
@@ -134,6 +144,8 @@ class HWCommand extends CConsoleCommand
             $feedModel->status = $data['status'];
             $res = $feedModel->save();
             return $feedModel->_id;
+        }else{
+            echo 'empty article'."\n";
         }
         return false;
     }
