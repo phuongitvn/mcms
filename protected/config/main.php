@@ -34,6 +34,7 @@ return CMap::mergeArray(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+                '<_c:\w+>/<url_key_cat1:[a-zA-Z0-9-]+>/<url_key:[a-zA-Z0-9-]+>,<id:\w+>' => '<_c>/view',
                 '<_c:\w+>/<url_key:[a-zA-Z0-9-]+>,<id:\w+>' => '<_c>/view',
                 '<_c:\w+>/<url_key:[a-zA-Z0-9-]+>' => '<_c>/index',
                 '<_c:\w+>/<_a:\w+>/<id:\w+>' => '<_c>/<_a>',

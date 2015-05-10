@@ -15,6 +15,8 @@ class PostController extends Controller
 	public function actionView()
 	{
         $id = Yii::app()->request->getParam('id');
+        $genre = Yii::app()->request->getParam('url_key_cat1');
+        $this->activemenu = $genre;
         $article = WebArticlesModel::model()->model()->findByPk(new MongoId($id));
 		if(!$article){
             throw new CHttpException(404,"There is not found!");

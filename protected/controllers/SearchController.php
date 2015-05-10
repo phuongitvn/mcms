@@ -6,8 +6,6 @@ class SearchController extends Controller
     {
         $keyword = Yii::app()->request->getParam('keyword','');
         $page = Yii::app()->request->getParam('page',1);
-        $limit = 10;
-        $offset = ($page-1)*$limit;
         // Find all records witch have first name starring on a, b and c, case insensitive search
         $keyRegexPattern = self::formatKeywordsPatternSearch($keyword);
         if(empty($keyRegexPattern)){
@@ -15,16 +13,32 @@ class SearchController extends Controller
         }else {
             $regexObj = new MongoRegex($keyRegexPattern);
             $c = array(
+                'conditions'=>array(
+                    'status'=>array('==' => 1),
+                    'title' => array('==' => $regexObj)
+                ),
+            );
+            $total = WebArticlesModel::model()->count($c);
+            $pager = new CPagination($total);
+            $itemOnPaging = 5;
+            $pager->pageSize = 10;
+            $curr_page = $pager->getCurrentPage();
+
+            $limit = $pager->getLimit();
+            $offset = $pager->getOffset();
+
+            $c = array(
                 'conditions' => array(
-                    'status' => array('equals' => 1),
-                    'title' => array('equals' => $regexObj)
+                    'status' => array('==' => 1),
+                    'title' => array('==' => $regexObj)
                 ),
                 'limit' => $limit,
                 'offset' => $offset
             );
             $data = WebArticlesModel::model()->findAll($c);
+
         }
-        $this->render('index', compact('data','page','keyword','limit'));
+        $this->render('index', compact('data','pager','itemOnPaging','keyword','limit'));
     }
     public static function formatKeywordsPatternSearch($keyword)
     {

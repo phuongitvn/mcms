@@ -6,7 +6,7 @@
         <ul class="items-listview">
             <?php foreach($data as $item):?>
                 <?php
-                $link = Yii::app()->createUrl('/post/view', array('id'=>$item->_id,'url_key'=>Common::makeFriendlyUrl($item->title)));
+                $link = Yii::app()->createUrl('/post/view', array('id'=>$item->_id,'url_key_cat1'=>$item->genre,'url_key'=>Common::makeFriendlyUrl($item->title)));
                 $image = FeedModel::model()->getAvatarUrl($item->thumb);
                 ?>
                 <li class="item">

@@ -5,6 +5,8 @@ class CategoryController extends Controller
     public function actionIndex()
     {
         $url_key = Yii::app()->request->getParam('url_key');
+        $url_key=trim($url_key);
+        $this->activemenu = $url_key;
         $c = array(
             'conditions'=>array(
                 //'status'=>array('==' => "1"),
