@@ -17,7 +17,7 @@ class DataCrawl extends AbstractDataCrawl
 		if(!$this->html){
 			return false;
 		}
-		$this->removeElements();
+		//$this->removeElements();
 		return true;
 	}
 	public function getTitle()
@@ -38,6 +38,7 @@ class DataCrawl extends AbstractDataCrawl
 			throw new Exception('Content pattern is empty', 606);
 		}
 		$contentParttern = $this->config['content_pattern'];
+        $this->removeElements();
 		$this->beforeGetContentBody();
 		$this->content = ($this->html->find("$contentParttern",0))?$this->html->find("$contentParttern",0)->innertext:"";
 		$this->afterGetContentBody();

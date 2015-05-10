@@ -10,6 +10,10 @@ class CrawlDataFactory
                 Yii::import('application.components.crawl.Cnet');
                 $data = new Cnet($config);
                 break;
+            case 'HW':
+                Yii::import('application.components.crawl.HW');
+                $data = new HW($config);
+                break;
 			default:
 				$data = NULL;
 				break;
