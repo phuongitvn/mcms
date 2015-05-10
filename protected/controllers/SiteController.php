@@ -27,8 +27,21 @@ class SiteController extends Controller
     }
     public function actionIndex()
     {
-        $limit = 10;
-        $offset = 0;
+        $c = array(
+            'conditions'=>array(
+                'status'=>array('==' => 1),
+            ),
+        );
+
+        $total = WebArticlesModel::model()->count($c);
+        $pager = new CPagination($total);
+        $itemOnPaging = 5;
+        $pager->pageSize = 10;
+        $curr_page = $pager->getCurrentPage();
+
+        $limit = $pager->getLimit();
+        $offset = $pager->getOffset();
+
         $c = array(
             'conditions'=>array(
                 'status'=>array('==' => 1),
@@ -38,7 +51,7 @@ class SiteController extends Controller
             'offset'=> $offset
         );
         $data = FeedModel::model()->findAll($c);
-        $this->render('index', compact('data'));
+        $this->render('index', compact('data','pager','itemOnPaging'));
     }
 	/**
 	 * This is the action to handle external exceptions.
