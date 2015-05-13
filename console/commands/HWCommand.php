@@ -39,6 +39,12 @@ class HWCommand extends CConsoleCommand
             'genre'=>'beauty-aging',
             'source'=>'healthywomen'
         );
+        $cat[] = array(
+            'url'=>'http://www.healthywomen.org/ages-and-stages/healthy-living/diet-and-nutrition',
+            'tags'=>'healthy-living,diet-and-nutrition,ages-and-stages',
+            'genre'=>'food-fitness',
+            'source'=>'healthywomen'
+        );
         try{
             foreach($cat as $key => $value) {
                 $url = $value['url'];

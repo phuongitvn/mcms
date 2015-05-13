@@ -41,6 +41,9 @@ class HW extends DataCrawl
                     if (is_object($content)) {
 
                         $img = $content->find("img", 0)->src;
+                        if(strpos($img,self::_DOMAIN)===false){
+                            $img = self::_DOMAIN.$img;
+                        }
                         $tag = true;
                         $i=0;
                         while($tag){
@@ -74,7 +77,13 @@ class HW extends DataCrawl
 
         foreach($this->html->find("$contentParttern img") as $e) {
             $imgSrc = $e->src;
-            if (!empty($imgSrc)) {
+            if($imgSrc=='http://www.healthywomen.org/sites/default/files/HEALTHDAY_99white.gif'){
+                $e->src = SITE_URL.'/images/health2tips_125_83.png';
+                $e->height="";
+            }elseif (!empty($imgSrc)) {
+                if(strpos($imgSrc,self::_DOMAIN)===false){
+                    $imgSrc = self::_DOMAIN.$imgSrc;
+                }
                 $fileInfo = explode('.', $imgSrc);
                 $fileType = $fileInfo[count($fileInfo) - 1];
                 $fileName = 'tmp_' . $sn . $i . "." . $fileType;
