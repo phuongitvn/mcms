@@ -554,7 +554,7 @@ ul.main-nv > li{
 ul.main-nv li a{
     font-family: 'Oswald';
     display: block;
-    padding: 0 20px;
+    padding: 0 15px;
     font-size: 15px;
     color: #fff;
     text-decoration: none;
@@ -592,7 +592,7 @@ ul.main-nv li a.home:hover{
     display: none;
     background: #42D0DB;
     top: 45px;
-    box-shadow: 2px 1px 3px #333;
+    box-shadow: 2px 1px 3px #ccc;
 }
 .drop-nav li a {
     border-bottom: 1px solid rgba(255,255,255,.2);
