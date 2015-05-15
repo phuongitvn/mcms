@@ -57,6 +57,8 @@ $url_key = Yii::app()->request->getParam('url_key','');
                     </li>
                 </ul>
             </li>
+            <li class="separator"></li>
+            <li><a href="#">Video</a></li>
             <li style="float: right;margin-right: 10px;">
                 <div class="search">
                     <form action="<?php echo Yii::app()->createUrl('/search/index')?>" method="get">
