@@ -20,7 +20,7 @@ return array(
 		'blog_path'		=> 	SITE_PATH.DS.'storage'.DS.'blog',
 		'blog_url'		=>	SITE_URL.'/storage/blog',
         'profile_image'=>array(
-            'thumb'=>array('width'=>125,'height'=>83)
+            'thumb'=>array('width'=>150,'height'=>100)
         ),
 		'images_available'=>array(
 			'full'=>array(

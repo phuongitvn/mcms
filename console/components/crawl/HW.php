@@ -130,16 +130,20 @@ class HW extends DataCrawl
 
                 if ($res_get_file && file_exists($sfile)) {
                     $fileDest = StorageHelper::generalStoragePath($sn . $i, $fileType, $storage);
-                    //copy file from tmp
-                    /*$fileSystem = new Filesystem();
-                    $copy = $fileSystem->copy($sfile, $fileDest);*/
-                    //resize image
-                    $width=500;
-                    $height = 0;
-                    $resizeObj = new ResizeImage($sfile);
-                    $resizeObj->resizeImage($width, $height);
-                    $resizeObj->saveImage($fileDest, 100);
-
+                    list($width, $height) = getimagesize($sfile);
+                    if($width>500){
+                        //resize image
+                        $width=500;
+                        $height = 0;
+                        $resizeObj = new ResizeImage($sfile);
+                        $resizeObj->resizeImage($width, $height);
+                        $resizeObj->saveImage($fileDest, 100);
+                    }else{
+                        //copy file from tmp
+                        $fileSystem = new Filesystem();
+                        $copy = $fileSystem->copy($sfile, $fileDest);
+                    }
+                    unlink($sfile);
                     if (file_exists($fileDest)) {
                         echo $fileDest . "\n";
                         $fileDestUrl = str_replace($storage,$cdn,$fileDest);
@@ -151,6 +155,7 @@ class HW extends DataCrawl
                     } else {
                         echo 'replace file content error' . "\n";
                     }
+
                 }
                 $i++;
             }
@@ -205,14 +210,19 @@ class HW extends DataCrawl
 
                             if ($res_get_file && file_exists($sfile)) {
                                 $fileDest = StorageHelper::generalStoragePath($sn . $i, $fileType, $storage);
-                                /*$fileSystem = new Filesystem();
-                                $copy = $fileSystem->copy($sfile, $fileDest);*/
+                                list($width, $height) = getimagesize($sfile);
+                                if($width>500){
+                                    $width=500;
+                                    $height = 0;
+                                    $resizeObj = new ResizeImage($sfile);
+                                    $resizeObj->resizeImage($width, $height);
+                                    $resizeObj->saveImage($fileDest, 100);
+                                }else{
+                                    $fileSystem = new Filesystem();
+                                    $copy = $fileSystem->copy($sfile, $fileDest);
+                                }
                                 //resize image
-                                $width=500;
-                                $height = 0;
-                                $resizeObj = new ResizeImage($sfile);
-                                $resizeObj->resizeImage($width, $height);
-                                $resizeObj->saveImage($fileDest, 100);
+                                unlink($sfile);
                                 if (file_exists($fileDest)) {
                                     echo $fileDest . "\n";
                                     $fileDestUrl = str_replace($storage,$cdn,$fileDest);

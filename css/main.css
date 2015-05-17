@@ -21,6 +21,10 @@ a{
     text-decoration: none;
     color: #07e;
 }
+a:hover{
+    color: #42D0DB;
+    text-decoration: underline;
+  }
 #header{
     position: fixed;
     z-index: 999;
@@ -305,10 +309,14 @@ span.icon-arr-l{
     border-top: 1px solid #ccc;
     overflow: hidden;
     height: 25px;
+    font-size: 12px;
 }
-.wrr-footer .wr-ftl,
-.wrr-footer .wr-ftr{
+.wrr-footer .wr-ftl
+{
     float: left;
+}
+.wrr-footer .wr-ftr{
+    float: right;
 }
 ul.op{
     margin:0;
@@ -512,12 +520,6 @@ ul.social-like li{
 }
 ._vertical ul.items-listview li h2{
     margin-top: 10px
-}
-._vertical ul.items-listview li h2 a{
-    color: #333;
-}
-._vertical ul.items-listview li h2 a:hover{
-    color: #D24025;
 }
 ._image ul.items-listview>li{
     margin-bottom: 15px;

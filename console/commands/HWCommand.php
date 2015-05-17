@@ -209,6 +209,7 @@ class HWCommand extends CConsoleCommand
             $resizeObj ->resizeImage($width, $height, 0);
             $resizeObj ->saveImage($fileDest, 100);
             //$resize = $imageCrop->resizeCrop($fileDest,$width,$height);
+            $fileSystem->remove($tmpFile);
             if($resizeObj){
                 $thumbPath = str_replace($storage,'',$fileDest);
                 return $thumbPath;

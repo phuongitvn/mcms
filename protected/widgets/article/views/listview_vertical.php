@@ -5,7 +5,8 @@
             <?php foreach($data as $item):?>
                 <?php
                 $link = Yii::app()->createUrl('/post/view', array('id'=>$item->_id,'url_key'=>Common::makeFriendlyUrl($item->title)));
-                $image = FeedModel::model()->getAvatarUrl($item->thumb);
+                //$image = FeedModel::model()->getAvatarUrl($item->second_thumb);
+                $image = $item->second_thumb;
                 ?>
                 <li class="item">
                     <div>

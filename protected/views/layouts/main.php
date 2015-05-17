@@ -76,7 +76,7 @@
             <?php echo $content;?>
             <div id="footer">
                 <div class="wrr-footer">
-                    <div class="wr-ftl">Tips &#169;2015</div>
+                    <div class="wr-ftl">Copyright &#169; 2015 Health2Tips</div>
                     <div class="wr-ftr">
                         <ul class="term op">
                             <li><a href="<?php echo Yii::app()->createUrl('/site/contact')?>">Contacts</a></li>
