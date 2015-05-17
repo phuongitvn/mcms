@@ -9,6 +9,7 @@ class BaseFeedModel extends EMongoDocument
     public $tags;
     public $views;
     public $thumb;
+    public $second_thumb;
     public $comments;/*comment count*/
     public $url_source;/*from*/
     public $source;/*from*/
