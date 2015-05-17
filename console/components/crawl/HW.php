@@ -3,6 +3,7 @@ Yii::import('console.components.crawl._base.DataCrawl');
 class HW extends DataCrawl
 {
     const _DOMAIN = 'http://www.healthywomen.org';
+    const _MY_DOMAIN = 'http://localhost:6969';
     const _ALT = 'Health2Tips';
     public $second_thumb = '';
     public function __construct($config)
@@ -81,9 +82,9 @@ class HW extends DataCrawl
         $contentParttern = $this->config['content_pattern'];
         foreach($this->html->find("$contentParttern img") as $e) {
             $imgSrc = $e->src;
-            if(strpos($imgSrc,self::_DOMAIN)===false){
-                $imgSrc = self::_DOMAIN.$imgSrc;
-            }
+            /*if(strpos($imgSrc,self::_MY_DOMAIN)===false){
+                $imgSrc = self::_MY_DOMAIN.$imgSrc;
+            }*/
             list($width, $height) = getimagesize($imgSrc);
             /*echo $imgSrc."\n";
             echo 'width:'.$width."\n";
@@ -129,14 +130,23 @@ class HW extends DataCrawl
 
                 if ($res_get_file && file_exists($sfile)) {
                     $fileDest = StorageHelper::generalStoragePath($sn . $i, $fileType, $storage);
-                    $fileSystem = new Filesystem();
-                    $copy = $fileSystem->copy($sfile, $fileDest);
-                    if ($copy) {
+                    //copy file from tmp
+                    /*$fileSystem = new Filesystem();
+                    $copy = $fileSystem->copy($sfile, $fileDest);*/
+                    //resize image
+                    $width=500;
+                    $height = 0;
+                    $resizeObj = new ResizeImage($sfile);
+                    $resizeObj->resizeImage($width, $height);
+                    $resizeObj->saveImage($fileDest, 100);
+
+                    if (file_exists($fileDest)) {
                         echo $fileDest . "\n";
                         $fileDestUrl = str_replace($storage,$cdn,$fileDest);
                         $fileDestUrl = str_replace(DS,"/",$fileDestUrl);
                         echo $fileDestUrl . "\n";
-                        $e->src = $fileDestUrl;
+                        //$e->src = $fileDestUrl;
+                        $e->outertext = '<img src="'.$fileDestUrl.'" title="'.$e->title.'" alt="'.$e->alt.'" />';
                         echo 'replace file content success' . "\n";
                     } else {
                         echo 'replace file content error' . "\n";
@@ -179,12 +189,12 @@ class HW extends DataCrawl
                     foreach ($htmlBodyPage->find("a") as $e)
                     {
                         $innerText = $e->plaintext;
-                        //$e->outertext = $innerText;
-                        $e->href = '#';
+                        $e->outertext = $innerText;
+                        //$e->href = '#';
                     }
                     //get image for content
                     $i=0;
-                    foreach($this->html->find("$contentParttern img") as $e) {
+                    foreach($htmlBodyPage->find("$contentParttern img") as $e) {
                         $imgSrc = $e->src;
                         if (!empty($imgSrc)) {
                             $fileInfo = explode('.', $imgSrc);
@@ -195,16 +205,23 @@ class HW extends DataCrawl
 
                             if ($res_get_file && file_exists($sfile)) {
                                 $fileDest = StorageHelper::generalStoragePath($sn . $i, $fileType, $storage);
-                                $fileSystem = new Filesystem();
-                                $copy = $fileSystem->copy($sfile, $fileDest);
-                                if ($copy) {
+                                /*$fileSystem = new Filesystem();
+                                $copy = $fileSystem->copy($sfile, $fileDest);*/
+                                //resize image
+                                $width=500;
+                                $height = 0;
+                                $resizeObj = new ResizeImage($sfile);
+                                $resizeObj->resizeImage($width, $height);
+                                $resizeObj->saveImage($fileDest, 100);
+                                if (file_exists($fileDest)) {
                                     echo $fileDest . "\n";
                                     $fileDestUrl = str_replace($storage,$cdn,$fileDest);
                                     $fileDestUrl = str_replace(DS,"/",$fileDestUrl);
 
                                     echo $fileDestUrl . "\n";
-                                    $e->src = $fileDestUrl;
-                                    echo 'replace file content success' . "\n";
+                                    //$e->src = $fileDestUrl;
+                                    $e->outertext = '<img src="'.$fileDestUrl.'" title="'.$e->title.'" alt="'.$e->alt.'" />';
+                                    echo 'replace file content success in page'.$j. "\n";
                                 } else {
                                     echo 'replace file content error' . "\n";
                                 }
