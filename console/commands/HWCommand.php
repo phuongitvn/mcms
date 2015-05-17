@@ -102,6 +102,7 @@ class HWCommand extends CConsoleCommand
                                 $html['title'] = addslashes($article['title']);
                                 $html['introtext'] = trim($article['introtext']);
                                 $html['thumb'] = $imgThumb;
+                                $html['second_thumb'] = $data->getOtherThumb();
                                 $html['fulltext'] = $content;
                                 $html['source'] = $article['source'];
                                 $html['genre'] = $article['genre'];
@@ -111,7 +112,21 @@ class HWCommand extends CConsoleCommand
                                 if ($res) {
                                     echo 'id:' . $res . "\n";
                                     //process thumb
-                                    $pthumb = $this->processThumb($res, $html['thumb']);
+                                    if(strpos($html['thumb'],'health2tips')!==false){
+                                        $pthumb = $html['thumb'];
+                                    }else{
+                                        $pthumb = $this->processThumb($res, $html['thumb']);
+                                    }
+                                    if($pthumb){
+                                        $feed = FeedModel::model()->findByPk(new MongoId($res));
+                                        $feed->thumb = $pthumb;
+                                        $feed->status = 1;
+                                        $updateThumb = $feed->save();
+                                        echo 'update thumb:'.json_encode($updateThumb)."\n";
+                                    }else{
+                                        echo 'update thumb: false'."\n";
+                                    }
+
                                 }
                                 //}
                                 $i++;
@@ -121,6 +136,7 @@ class HWCommand extends CConsoleCommand
 
                         }else{
                             echo 'This article is exists!'."\n";
+                            $tag = false;
                         }
                     }
 
@@ -139,6 +155,7 @@ class HWCommand extends CConsoleCommand
             $feedModel->introtext = $data['introtext'];
             $feedModel->fulltext = $data['fulltext'];
             $feedModel->thumb = $data['thumb'];
+            $feedModel->second_thumb = $data['second_thumb'];
             $feedModel->url_source = $data['link'];
             $feedModel->source = $data['source'];
             $feedModel->genre = $data['genre'];
@@ -187,13 +204,10 @@ class HWCommand extends CConsoleCommand
             $resizeObj ->saveImage($fileDest, 100);
             //$resize = $imageCrop->resizeCrop($fileDest,$width,$height);
             if($resizeObj){
-                echo 'copy file success!'."\n";
-                $feed = FeedModel::model()->findByPk(new MongoId($_id));
                 $thumbPath = str_replace($storage,'',$fileDest);
-                $feed->thumb = $thumbPath;
-                $feed->status = 1;
-                return $feed->save();
+                return $thumbPath;
             }
+            return false;
         }
     }
 }

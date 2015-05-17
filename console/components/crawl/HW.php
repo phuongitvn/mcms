@@ -3,13 +3,18 @@ Yii::import('console.components.crawl._base.DataCrawl');
 class HW extends DataCrawl
 {
     const _DOMAIN = 'http://www.healthywomen.org';
+    const _ALT = 'Health2Tips';
+    public $second_thumb = '';
     public function __construct($config)
     {
         $config = array(
             'title_pattern'=>'.content-left h3',
             'content_pattern'=>'.content-left',
             'remove_pattern'=>'.print-link|h3|.item-list|div.node-info-bar',
-            'imgavatar_pattern'=>'.imageContainer img'
+            'imgavatar_pattern'=>'.imageContainer img',
+            'replace_pattern'=>array(
+                'HealthDay News'=>'Health2Tips'
+            )
         );
         //parent::__construct($config);
         $this->config = $config;
@@ -35,14 +40,20 @@ class HW extends DataCrawl
                             }
                         }
                     }
-
                     $content = $html->find("$contentParttern", 0)->innertext;
+                    $replacePattern = $this->config['replace_pattern'];
+                    foreach($replacePattern as $key => $value){
+                        $content = str_replace($key,$value,$content);
+                    }
                     $content = str_get_html($content);
                     if (is_object($content)) {
 
                         $img = $content->find("img", 0)->src;
                         if(strpos($img,self::_DOMAIN)===false){
                             $img = self::_DOMAIN.$img;
+                        }
+                        if(strpos($img,'HEALTHDAY_99white.gif')!==false){
+                            $img = '/images/health2tips_125_83.png';
                         }
                         $tag = true;
                         $i=0;
@@ -58,13 +69,38 @@ class HW extends DataCrawl
                             'title' => $title,
                             'link' => self::_DOMAIN.$link,
                             'img' => $img,
-                            'introtext' => $introtext
+                            'introtext' =>$this->validString($introtext)
                         );
                     }
                 }
             }
         }
         return $data;
+    }
+    public function getOtherThumb($minzise=300){
+        $contentParttern = $this->config['content_pattern'];
+        foreach($this->html->find("$contentParttern img") as $e) {
+            $imgSrc = $e->src;
+            if(strpos($imgSrc,self::_DOMAIN)===false){
+                $imgSrc = self::_DOMAIN.$imgSrc;
+            }
+            list($width, $height) = getimagesize($imgSrc);
+            /*echo $imgSrc."\n";
+            echo 'width:'.$width."\n";
+            echo 'height:'.$height."\n";
+            exit;*/
+            if($width>=$minzise){
+                return $imgSrc;
+            }
+        }
+        return '';
+    }
+    protected function validString($str)
+    {
+        if(strlen($str)>200){
+            return FormatHelper::smartCut($str,170,0,'');
+        }
+        return $str;
     }
     protected function beforeGetContentBody()
     {
@@ -80,6 +116,7 @@ class HW extends DataCrawl
             if($imgSrc=='http://www.healthywomen.org/sites/default/files/HEALTHDAY_99white.gif'){
                 $e->src = SITE_URL.'/images/health2tips_125_83.png';
                 $e->height="";
+                $e->alt = self::_ALT;
             }elseif (!empty($imgSrc)) {
                 if(strpos($imgSrc,self::_DOMAIN)===false){
                     $imgSrc = self::_DOMAIN.$imgSrc;
@@ -98,7 +135,6 @@ class HW extends DataCrawl
                         echo $fileDest . "\n";
                         $fileDestUrl = str_replace($storage,$cdn,$fileDest);
                         $fileDestUrl = str_replace(DS,"/",$fileDestUrl);
-
                         echo $fileDestUrl . "\n";
                         $e->src = $fileDestUrl;
                         echo 'replace file content success' . "\n";
