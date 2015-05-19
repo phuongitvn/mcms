@@ -66,9 +66,15 @@ class DataCrawl extends AbstractDataCrawl
 				}
 			}
 		}
+        foreach ($this->html->find("a img") as $e)
+        {
+            $innerText = $e->plaintext;
+            $e->outertext = $innerText;
+            //$e->href = '#';
+        }
 		foreach ($this->html->find("a") as $e)
 		{
-			$innerText = $e->plaintext;
+			$innerText = $e->innertext;
 			$e->outertext = $innerText;
 			//$e->href = '#';
 		}

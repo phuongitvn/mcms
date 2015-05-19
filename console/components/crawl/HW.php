@@ -78,9 +78,10 @@ class HW extends DataCrawl
         }
         return $data;
     }
-    public function getOtherThumb($minzise=300){
+    public function getOtherThumb($html,$minzise=300){
         $contentParttern = $this->config['content_pattern'];
-        foreach($this->html->find("$contentParttern img") as $e) {
+        $html = str_get_html($html);
+        foreach($html->find("img") as $e) {
             $imgSrc = $e->src;
             /*if(strpos($imgSrc,self::_MY_DOMAIN)===false){
                 $imgSrc = self::_MY_DOMAIN.$imgSrc;
@@ -111,7 +112,6 @@ class HW extends DataCrawl
         $storage = Yii::app()->params['feed_path'];
         $cdn = Yii::app()->params['cdn_url'];
         $contentParttern = $this->config['content_pattern'];
-
         foreach($this->html->find("$contentParttern img") as $e) {
             $imgSrc = $e->src;
             if($imgSrc=='http://www.healthywomen.org/sites/default/files/HEALTHDAY_99white.gif'){
@@ -131,6 +131,7 @@ class HW extends DataCrawl
                 if ($res_get_file && file_exists($sfile)) {
                     $fileDest = StorageHelper::generalStoragePath($sn . $i, $fileType, $storage);
                     list($width, $height) = getimagesize($sfile);
+                    $fileImgType = 'default';
                     if($width>500){
                         //resize image
                         $width=500;
@@ -138,6 +139,7 @@ class HW extends DataCrawl
                         $resizeObj = new ResizeImage($sfile);
                         $resizeObj->resizeImage($width, $height);
                         $resizeObj->saveImage($fileDest, 100);
+                        $fileImgType = 'large';
                     }else{
                         //copy file from tmp
                         $fileSystem = new Filesystem();
@@ -150,7 +152,11 @@ class HW extends DataCrawl
                         $fileDestUrl = str_replace(DS,"/",$fileDestUrl);
                         echo $fileDestUrl . "\n";
                         //$e->src = $fileDestUrl;
-                        $e->outertext = '<img src="'.$fileDestUrl.'" title="'.$e->title.'" alt="'.$e->alt.'" />';
+                        if($fileImgType=='large') {
+                            $e->outertext = '<center><img src="' . $fileDestUrl . '" title="' . $e->title . '" alt="' . $e->alt . '" /></center>';
+                        }else{
+                            $e->outertext = '<img src="' . $fileDestUrl . '" title="' . $e->title . '" alt="' . $e->alt . '" />';
+                        }
                         echo 'replace file content success' . "\n";
                     } else {
                         echo 'replace file content error' . "\n";

@@ -27,30 +27,7 @@ class HWCommand extends CConsoleCommand
     }
     public function actionFind()
     {
-        $cat[] = array(
-                'url'=>'http://www.healthywomen.org/ages-and-stages/healthy-living/fitness',
-                'tags'=>'healthy-living,fitness',
-                'genre'=>'health-wellness',
-                'source'=>'healthywomen'
-        );
-        $cat[] = array(
-            'url'=>'http://www.healthywomen.org/ages-and-stages/healthy-living/beauty-and-aging',
-            'tags'=>'healthy-living,beauty-aging',
-            'genre'=>'beauty-aging',
-            'source'=>'healthywomen'
-        );
-        $cat[] = array(
-            'url'=>'http://www.healthywomen.org/ages-and-stages/healthy-living/diet-and-nutrition',
-            'tags'=>'healthy-living,diet-and-nutrition,ages-and-stages',
-            'genre'=>'food-fitness',
-            'source'=>'healthywomen'
-        );
-        $cat[] = array(
-            'url'=>'http://www.healthywomen.org/ages-and-stages/family-health-and-wellness-guide',
-            'tags'=>'healthy-living,family-health,wellness-guide',
-            'genre'=>'health-wellness',
-            'source'=>'healthywomen'
-        );
+        $cat = include_once SITE_PATH.DS.'console'.DS.'config'.DS.'healthywomen.php';
         try{
             foreach($cat as $key => $value) {
                 $url = $value['url'];
@@ -108,7 +85,7 @@ class HWCommand extends CConsoleCommand
                                 $html['title'] = addslashes($article['title']);
                                 $html['introtext'] = trim($article['introtext']);
                                 $html['thumb'] = $imgThumb;
-                                $html['second_thumb'] = $data->getOtherThumb();
+                                $html['second_thumb'] = $data->getOtherThumb($content);
                                 $html['fulltext'] = $content;
                                 $html['source'] = $article['source'];
                                 $html['genre'] = $article['genre'];
@@ -159,6 +136,9 @@ class HWCommand extends CConsoleCommand
             $feedModel = new FeedModel();
             $feedModel->title = $data['title'];
             $feedModel->introtext = $data['introtext'];
+            /*$s = preg_replace("/<p ?.*>SOURCE(.*?)<\/p>/","",$data['fulltext']);
+            $s = preg_replace("/<p ?.*>Published(.*?)<\/p>/","",$s);
+            $s = preg_replace("/<p ?.*>Copyright(.*?)<\/p>/","",$s);*/
             $feedModel->fulltext = $data['fulltext'];
             $feedModel->thumb = $data['thumb'];
             $feedModel->second_thumb = $data['second_thumb'];
