@@ -93,6 +93,7 @@ class HWCommand extends CConsoleCommand
                                 $html['genre'] = $article['genre'];
                                 $html['tags'] = $article['tags'];
                                 $html['status'] = 0;
+                                echo '<pre>';print_r($html);
                                 $res = $this->addToFeed($html);
                                 if ($res) {
                                     echo 'id:' . $res . "\n";
@@ -112,6 +113,8 @@ class HWCommand extends CConsoleCommand
                                         echo 'update thumb: false'."\n";
                                     }
 
+                                }else{
+                                    echo 'add article fail';
                                 }
                                 //}
                                 $i++;
