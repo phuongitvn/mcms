@@ -154,6 +154,7 @@ class HWCommand extends CConsoleCommand
             $feedModel->created_by = $author;
             $feedModel->status = $data['status'];
             $res = $feedModel->save();
+            var_dump($res);
             return $feedModel->_id;
         }else{
             echo 'empty article'."\n";
