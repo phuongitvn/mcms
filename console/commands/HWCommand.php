@@ -136,10 +136,10 @@ class HWCommand extends CConsoleCommand
             $feedModel = new FeedModel();
             $feedModel->title = $data['title'];
             $feedModel->introtext = $data['introtext'];
-            /*$s = preg_replace("/<p ?.*>SOURCE(.*?)<\/p>/","",$data['fulltext']);
-            $s = preg_replace("/<p ?.*>Published(.*?)<\/p>/","",$s);
-            $s = preg_replace("/<p ?.*>Copyright(.*?)<\/p>/","",$s);*/
-            $feedModel->fulltext = $data['fulltext'];
+            $s = preg_replace("/<p>(SOURCE.*?)<\/p>/i","",$data['fulltext']);
+            $s = preg_replace("/<p>(Published.*?)<\/p>/i","",$s);
+            $s = preg_replace("/<p>(Copyright.*?)<\/p>/i","",$s);
+            $feedModel->fulltext = $s;
             $feedModel->thumb = $data['thumb'];
             $feedModel->second_thumb = $data['second_thumb'];
             $feedModel->url_source = $data['link'];
