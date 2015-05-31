@@ -27,6 +27,8 @@ class HWCommand extends CConsoleCommand
     }
     public function actionFind()
     {
+        error_reporting(E_ALL | E_STRICT);
+        ini_set('display_errors','On');
         $cat = include_once SITE_PATH.DS.'console'.DS.'config'.DS.'healthywomen.php';
         try{
             foreach($cat as $key => $value) {
