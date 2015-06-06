@@ -20,6 +20,9 @@ class FeedModel extends BaseFeedModel
             $fileSystem = new Filesystem();
             $res_get_file = $fileSystem->copy($imgsrc,$tmpFile);
             if(!$res_get_file){
+                var_dump($res_get_file);
+                echo '$tmpFile:'.$tmpFile;
+                exit;
                 throw new Exception("Copy file error!", 7);
             }
         }
