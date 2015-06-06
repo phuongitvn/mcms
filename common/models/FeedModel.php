@@ -23,15 +23,16 @@ class FeedModel extends BaseFeedModel
         }
         if (file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
-            echo '$tmpFile:'.$tmpFile;
-            echo '$fileDest:'.$fileDest;
-            exit;
             /*$fileSystem = new Filesystem();
             $copy = $fileSystem->copy($tmpFile,$fileDest);*/
 
             $width = Yii::app()->params['profile_image']['thumb']['width'];
             $height = Yii::app()->params['profile_image']['thumb']['height'];
             $resizeObj = new ResizeImage($tmpFile);
+            var_dump($resizeObj);
+            echo '$tmpFile:'.$tmpFile;
+            echo '$fileDest:'.$fileDest;
+            exit;
             $resizeObj->resizeImage($width, $height, 0);
             $res = $resizeObj->saveImage($fileDest, 100);
             echo 'res:'.$fileDest;
