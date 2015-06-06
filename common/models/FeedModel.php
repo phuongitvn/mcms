@@ -23,7 +23,9 @@ class FeedModel extends BaseFeedModel
                 throw new Exception("Copy file error!", 7);
             }
         }
-
+        var_dump($res_get_file);
+        echo '$tmpFile:'.$tmpFile;
+        exit;
         if ($res_get_file && file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
             /*$fileSystem = new Filesystem();
