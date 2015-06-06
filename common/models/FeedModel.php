@@ -31,12 +31,6 @@ class FeedModel extends BaseFeedModel
             $resizeObj = new ResizeImage($tmpFile);
             $rs = $resizeObj->resizeImage($width, $height, 0);
             $res = $resizeObj->saveImage($fileDest, 100);
-            var_dump($res);
-            echo '$tmpFile:'.$tmpFile;
-            echo '$fileDest:'.$fileDest;
-            exit;
-            echo 'res:'.$fileDest;
-            var_dump($res);
             if($resizeObj){
                 $feed = self::model()->findByPk(new MongoId($_id));
                 $fileDest = str_replace($storage,'',$fileDest);
