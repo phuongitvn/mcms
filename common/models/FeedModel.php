@@ -19,16 +19,7 @@ class FeedModel extends BaseFeedModel
         }else{
             $fileSystem = new Filesystem();
             $res_get_file = $fileSystem->copy($imgsrc,$tmpFile);
-            if(!$res_get_file){
-                var_dump($res_get_file);
-                echo '$tmpFile:'.$tmpFile;
-                exit;
-                throw new Exception("Copy file error!", 7);
-            }
         }
-        var_dump($res_get_file);
-        echo '$tmpFile:'.$tmpFile;
-        exit;
         if ($res_get_file && file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
             /*$fileSystem = new Filesystem();
@@ -39,10 +30,6 @@ class FeedModel extends BaseFeedModel
             $resizeObj = new ResizeImage($tmpFile);
             $resizeObj->resizeImage($width, $height, 0);
             $res = $resizeObj->saveImage($fileDest, 100);
-            echo '$tmpFile:'.$tmpFile;
-            echo '$fileDest:'.$fileDest;
-            echo 'saveImage:';
-            var_dump($res);exit;
             if($resizeObj){
                 $feed = self::model()->findByPk(new MongoId($_id));
                 $fileDest = str_replace($storage,'',$fileDest);
@@ -50,6 +37,8 @@ class FeedModel extends BaseFeedModel
                 $res = $feed->save();
                 return $res;
             }
+        }else{
+            throw new Exception("create file temp error!", 7);
         }
     }
     public function getAvatarUrl($img){
