@@ -33,7 +33,11 @@ class FeedModel extends BaseFeedModel
             $height = Yii::app()->params['profile_image']['thumb']['height'];
             $resizeObj = new ResizeImage($tmpFile);
             $resizeObj->resizeImage($width, $height, 0);
-            $resizeObj->saveImage($fileDest, 100);
+            $res = $resizeObj->saveImage($fileDest, 100);
+            echo '$tmpFile:'.$tmpFile;
+            echo '$fileDest:'.$fileDest;
+            echo 'saveImage:';
+            var_dump($res);exit;
             if($resizeObj){
                 $feed = self::model()->findByPk(new MongoId($_id));
                 $fileDest = str_replace($storage,'',$fileDest);
