@@ -28,8 +28,10 @@ class elFinderLogger implements elFinderILogger {
 }
 
 $opts = array(
-	'root'            => 'E:\source\storage\media\\',  // path to root directory
-	'URL'             => 'http://localhost/storage/media/', // root directory URL
+	//'root'            => 'E:\source\storage\media\\',  // path to root directory
+	'root'            => '/mnt/my-data/storage/health2tips/media/',  // path to root directory
+	//'URL'             => 'http://localhost/storage/media/', // root directory URL
+	'URL'             => 'http://cdnmedia.health2tips.com/media/', // root directory URL
 	'rootAlias'       => 'Media',       // display this instead of root directory name
 	//'uploadAllow'   => array('images/*'),
 	//'uploadDeny'    => array('all'),
