@@ -5,7 +5,7 @@ class FeedModel extends BaseFeedModel
     {
         return parent::model($className);
     }
-    public function processThumb($imgsrc,$_id)
+    public function processThumb($imgsrc,$_id,$isUrl=true)
     {
         $_id = empty($_id)?$this->_id:$_id;
         $storage = Yii::app()->params['feed_path'];
@@ -14,8 +14,13 @@ class FeedModel extends BaseFeedModel
         $fileType = $fileInfo[count($fileInfo)-1];
         $fileName = 'tmp_'.$_id.".".$fileType;
         $tmpFile = $temp.DS.$fileName;
+        if($isUrl){
+            $res_get_file = FileRemote::getFromUrl($imgsrc,$tmpFile);
+        }else{
+            $fileSystem = new Filesystem();
+            $res_get_file = $fileSystem->copy($imgsrc,$tmpFile);
+        }
 
-        $res_get_file = FileRemote::getFromUrl($imgsrc,$tmpFile);
         if ($res_get_file && file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
             /*$fileSystem = new Filesystem();
