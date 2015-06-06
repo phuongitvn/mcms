@@ -19,6 +19,9 @@ class FeedModel extends BaseFeedModel
         }else{
             $fileSystem = new Filesystem();
             $res_get_file = $fileSystem->copy($imgsrc,$tmpFile);
+            if(!$res_get_file){
+                throw new Exception("Copy file error!", 7);
+            }
         }
 
         if ($res_get_file && file_exists($tmpFile)) {
