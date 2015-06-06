@@ -20,7 +20,7 @@ class FeedModel extends BaseFeedModel
             $fileSystem = new Filesystem();
             $res_get_file = $fileSystem->copy($imgsrc,$tmpFile);
         }
-        if ($res_get_file && file_exists($tmpFile)) {
+        if (file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
             /*$fileSystem = new Filesystem();
             $copy = $fileSystem->copy($tmpFile,$fileDest);*/
