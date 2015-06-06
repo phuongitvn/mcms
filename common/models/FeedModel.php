@@ -29,11 +29,11 @@ class FeedModel extends BaseFeedModel
             $width = Yii::app()->params['profile_image']['thumb']['width'];
             $height = Yii::app()->params['profile_image']['thumb']['height'];
             $resizeObj = new ResizeImage($tmpFile);
-            var_dump($resizeObj);
+            $rs = $resizeObj->resizeImage($width, $height, 0);
+            var_dump($rs);
             echo '$tmpFile:'.$tmpFile;
             echo '$fileDest:'.$fileDest;
             exit;
-            $resizeObj->resizeImage($width, $height, 0);
             $res = $resizeObj->saveImage($fileDest, 100);
             echo 'res:'.$fileDest;
             var_dump($res);
