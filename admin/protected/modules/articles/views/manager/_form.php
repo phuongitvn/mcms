@@ -93,11 +93,11 @@
 		<?php echo $form->error($model,'views'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'thumb'); ?>
-		<?php echo $form->textField($model,'thumb'); ?>
-		<?php echo $form->error($model,'thumb'); ?>
-	</div>
+	<!--<div class="row">
+		<?php /*echo $form->labelEx($model,'thumb'); */?>
+		<?php /*echo $form->textField($model,'thumb'); */?>
+		<?php /*echo $form->error($model,'thumb'); */?>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'comments'); ?>
