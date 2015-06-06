@@ -19,11 +19,13 @@ class FeedModel extends BaseFeedModel
         }else{
             $fileSystem = new Filesystem();
             $res_get_file = $fileSystem->copy($imgsrc,$tmpFile);
-            echo '$tmpFile:'.$tmpFile;
-            exit;
+
         }
         if (file_exists($tmpFile)) {
             $fileDest = StorageHelper::generalStoragePath($_id,$fileType,$storage);
+            echo '$tmpFile:'.$tmpFile;
+            echo '$fileDest:'.$fileDest;
+            exit;
             /*$fileSystem = new Filesystem();
             $copy = $fileSystem->copy($tmpFile,$fileDest);*/
 
