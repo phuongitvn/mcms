@@ -37,7 +37,7 @@
                     //'showMessage'=>"js:function(message){ alert(message); }"
                 )
             )); ?>
-        <!--<input type="hidden" name="AdminArticlesModel[thumb]" id="AdminArticlesModel_thumb" value="" />-->
+        <input type="hidden" name="AdminArticlesModel[thumb]" id="AdminArticlesModel_thumb" value="" />
     </div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'title'); ?>
