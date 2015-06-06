@@ -103,6 +103,7 @@ class ManagerController extends AdminController
             $model->status = (int)$_POST['AdminArticlesModel']['status'];
 			if($model->save()){
                 $filePath = Yii::app()->params['temp'].$_POST['AdminArticlesModel']['thumb'];
+                echo $filePath;exit;
                 if(file_exists($filePath)){
                     $thumb = AdminArticlesModel::model()->processThumb($filePath,$model->_id,false);
                 }
