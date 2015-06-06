@@ -16,7 +16,7 @@ class SiteController extends AdminController
             $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
             $result = $uploader->handleUpload($folder);
             $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-
+            echo '<pre>';print_r($result);exit;
             $fileSize = filesize($folder . $result['filename']);//GETTING FILE SIZE
             $fileName = $result['filename'];//GETTING FILE NAME
 
